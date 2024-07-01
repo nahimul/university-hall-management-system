@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  border: border-box;
+}
+/* html,body{
+    height:80%;
+    background-color: antiquewhite;
+    font-family: Montserrat;
+} */
+.nav-home:hover {
+  background: #038cfc;
+}
+
+.nav-login{
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+.nav-bar .nav-right .login-sub-menu{
+  position: absolute;
+  line-height: 40px;
+  background: #038cfc;
+  text-decoration: none;
+  list-style:none;
+  padding:15px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 4px 4px;
+  display: none;
+  z-index: 2;
+}
+.nav-bar .nav-right .user:hover .login-sub-menu{
+  display: block;
+  background-color: #038cfc;
+}
+
+.nav-right {
+  display: flex;
+  width: Hug (602px) px;
+  height: Hug (48px) px;
+  gap: 30px;
+  margin-right:132px;
+}
+.nav-bar a {
+  text-decoration: none;
+  color: white;
+  gap: 5rem;
+}
+
+.nav-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+.nav-left h1 {
+  font-family: Montserrat;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: left;
+  margin:auto;
+}
+
+.nav-left {
+  display: flex;
+  justify-content: space-around;
+  gap: 0.5rem;
+  margin-left: 132px;
+}
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  width: 100%;
+  height: 83px;
+  margin:auto;
+  background: #174ca1;
+  color: white;
+}
