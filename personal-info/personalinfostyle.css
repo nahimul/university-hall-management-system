@@ -1,0 +1,71 @@
+.nav-right .user .logo-img{
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+}
+.person-details .back {
+  background: inherit;
+  border: none;
+  text-align: start;
+  width: 95px;
+  gap: 4px;
+  font-family: Montserrat;
+  font-size: 16px;
+  color: #081c3b;
+}
+.person-details button:hover {
+  /* zoom in */
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.pi h2{
+    font-family: Montserrat;
+font-size: 40px;
+font-weight: 600;
+text-align: left;
+}
+.name{
+    font-family: Montserrat;
+font-size: 25px;
+}
+
+.person-details .details img {
+  width: 276px;
+  height: 276px;
+  border-radius: 8px;
+}
+.person-details .person-info{
+    width: 813px;
+height:276px;
+gap: 20px;
+}
+.person-details .more-details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  font-family: Montserrat;
+  color: #081c3b;
+  text-align: left;
+}
+.person-details .more-details table th {
+  padding: 8px 5px;
+}
+
+.person-details .details {
+  display: flex;
+  justify-content: start;
+  gap: 24px;
+  width: 1113px;
+}
+
+.pi {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  margin: 50px 132px;
+  background: white;
+  gap: 10px;
+}
+
