@@ -22,17 +22,38 @@
   font-family: inherit;
   margin: 0;
 }
+.nav-bar .nav-right .login-sub-menu a{
+  font-family: Montserrat;
+  display:block;
+  text-decoration: none;
+  width:100px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 8px;
+  color: #081C3B;
+  padding: 2px;
+  margin: 10px 0;
+}
+
+.nav-bar .nav-right .login-sub-menu a:hover{
+  transform: scale(1.01);
+  background: #002F91;
+  color:white;
+
+}
 .nav-bar .nav-right .login-sub-menu {
   position: absolute;
+  width: 100px;
   line-height: 40px;
-  background: #038cfc;
-  text-decoration: none;
+  background: #e3eefe;
   list-style: none;
-  padding: 22.5px;
+  align-items: center;
+  right:120px;
+  padding: 12px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  border-radius: 0 0 4px 4px;
+  border-radius: 8px;
   display: none;
-  z-index: 2;
 }
 /* .nav-bar .nav-right .user:hover {
   background: #038cfc;
@@ -86,13 +107,13 @@
 }
 
 /* container */
-.option{
-  display:flex;
-  justify-content:start;
-  gap:20px;
+.option {
+  display: flex;
+  justify-content: start;
+  gap: 20px;
   margin: 40px 0 0 132px;
 }
-.option button{
+.option button {
   background-color: inherit;
   border-style: none;
   font-family: Montserrat;
@@ -100,11 +121,15 @@
   font-weight: 100px;
   line-height: 20px;
   text-align: left;
-  color: #878e99; 
+  color: #878e99;
   text-decoration: none;
 }
 
 .option button:hover {
+  color: #081c3b;
+  text-decoration: underline;
+}
+.option .recent-event-bnt{
   color: #081c3b;
   text-decoration: underline;
 }
@@ -119,7 +144,7 @@
   color: #081c3b;
   padding: 10px 0;
 }
-.event .event-text p a{
+.event .event-text p a {
   font-family: Montserrat;
   font-size: 16px;
   font-weight: 400;
@@ -127,16 +152,6 @@
   text-align: left;
   color: #081c3b;
 }
-
-/* .event .event-text .read-more a {
-  text-decoration: none;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 19.2px;
-  text-align: left;
-  color: #002f91;
-} */
 
 .event-contents .event-image img {
   width: 274px;
@@ -151,6 +166,7 @@
   gap: 10px;
   margin-top: 20px;
 }
+
 .event {
   display: flex;
   justify-content: start;
@@ -160,118 +176,33 @@
   padding: 10px;
   border-radius: 8px;
 }
+
 .contact {
-  width: 550px;
   border: 1px solid #c4c2cc;
-  padding: 15px;
+  padding: 24px;
   border-radius: 8px;
 }
 
-.contact-info p {
+.contact-info table td{
   font-size: 16px;
   font-family: Montserrat;
-  width: Fill (328px) px;
-  height: Hug (104px) px;
+  width: 328px;
   gap: 12px;
-  opacity: 0px;
 }
 
-.contact h3{
+.contact h3 {
   margin: 10px 0;
 }
-.contact h4{
+.contact h4 {
   margin: 10px 0 2px 0;
 }
-.container .trans:hover{
+.container .trans:hover {
   transform: scale(1.01);
 }
-.container .event-contact {
+.container{
   display: flex;
   justify-content: space-between;
   align-items: start;
   margin: 50px 132px;
   gap: 10px;
 }
-
-/* Notice Board */
-.notice-container {
-  display: flex;
-  justify-content: start;
-  flex-direction: column;
-  align-items: start;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.notice .title-eye-dwn{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width:625px;
-padding: 12px 20px 12px 12px;
-}
-.notice .date {
-  width: 135px;
-  padding: 12px 16px 12px 16px;
-  gap: 8px;
-  border-right:1px solid #C4C2CC;
-  height:32px;
-}
-.notice .date-mn {
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 16px;
-  text-align: left;
-  color: #081c3b;
-}
-.notice .time {
-  font-family: Montserrat;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 14px;
-  text-align: left;
-  color: #081c3b;
-}
-.notice .title{
-  font-family: Montserrat;
-font-size: 16px;
-font-weight: 500;
-line-height: 16px;
-text-align: left;
-color: #081C3B;
-}
-.notice .eye-dwn{
-  display:flex;
-  width:60px;
-  justify-content: space-between;
-}
-.notice .eye-dwn button{
-  gap: 20px;
-  border: none;
-  background-color: inherit;
-  color: #878E99
-}
-.notice {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  background: #f6faff;
-  padding: 10px;
-  width: 776px;
-  height: Hug (62px) px;
-  gap: 8px;
-  border-radius: 8px;
-  opacity: 0px;
-}
-.notice-board {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  margin: 50px 132px;
-  gap: 10px;
-}
-
-
-

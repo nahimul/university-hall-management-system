@@ -2,10 +2,10 @@
     font-family: Montserrat;
 }
 
-.login-page h2 {
-    text-align: center;
+.login-page h1{
+    text-align: left;
     font-family: Montserrat;
-    font-size: 36px;
+    font-size: 50px;
     font-weight: 600;
     line-height: 43.2px;
     color: #081C3B;
@@ -30,7 +30,7 @@
 
 .password-toggle-icon {
     position: absolute;
-    top: 59%;
+    top: 63%;
     right: 5px;
     transform: translateY(-50%);
     cursor: pointer;

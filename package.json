@@ -1,7 +1,7 @@
 {
   "name": "university-hall-management-system",
   "version": "1.0.0",
-  "description": "Stack Holder:",
+  "description": "An Interactive University Hall Management System",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

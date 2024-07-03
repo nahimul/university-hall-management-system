@@ -7,6 +7,12 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 
+$app.use(express.static("Public"));
+
+$(".notice-bnt").addEventListener("click", (event)=>{
+
+});
+
 app.get("/", (req, res)=>{
     res.sendFile(__dirname + "/index.html");
 }
