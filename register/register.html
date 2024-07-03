@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hall Management System</title>
+    <link rel="stylesheet" type="text/css" href="../Public/style.css" />
+    <link rel="stylesheet" type="text/css" href="../login/loginstyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <div class="nav-bar">
+            <div class="nav-left">
+                <img class="nav-logo border" src="../Public/Logo_of_rajshahi_university.jpg" />
+                <h1> Shaheed Ziaur Rahman Hall</h1>
+            </div>
+            <div class="nav-right">
+                <a class="nav-home" href="../index.html">Home</a>
+                <div class="user">
+                    <button class="nav-login ">
+                        <a href="index.html">Login</a>
+                        <i class="fa-regular fa-user"></i>
+                    </button>
+                    <ul class="login-sub-menu sub-menu">
+                        <li><a href="#">Student</a></li>
+                        <li><a href="#">Officers</a></li>
+                        <li><a href="#">Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- login page for all-->
+    <div class="login-page">
+        <div class="login-header ">
+            <h1>Sign in to your account</h1>
+        </div>
+        <div class="form ">
+            <form>
+                <div class="input-box">
+                    <label for="email">Email</label>
+                    <input type="text" placeholder="Write email " id="email" required /> 
+                </div>
+                <div class="input-box">
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Type password" id="password" required />
+                    <span class="password-toggle-icon" ><i class="fa-regular fa-eye"></i></span> 
+                </div>
+                <div class="forgot">
+                    <label><i class="fa-solid fa-circle-info"></i> Try to use strong password with number and characters</label>
+                </div>
+                <div class="btn">
+                    <a href="../personal-info/personalinfo.html" target="_blank">
+                        <button type="submit" id="loginbtn">
+                          Register
+                        </button>
+                    </a>
+                </div>
+            </form>
+        </div>
+        <div class="register">
+            <p>Do you already have an account? <a href="../login/login.html"> Sign in! </a> </p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="registerscript.js"></script>
+</body>
+
+</html>
