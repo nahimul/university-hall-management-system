@@ -8,6 +8,7 @@ import Navbaruser from './component/navbar/Navbaruser';
 import Login from "./component/login/loginscript";
 import Register from "./component/register/registerscript";
 import User from "./component/personal-info/personalinfoscript";
+import Forget from "./component/register/Forget";
 
 function App() {
 
@@ -36,6 +37,10 @@ function App() {
     {
       path:"/user",
       element:<><Navbaruser/><User/></>
+    },
+    {
+      path:"/forgot",
+      element:<><Navbaruser/><Forget/></>
     }
   ]
   );

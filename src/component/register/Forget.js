@@ -1,25 +1,15 @@
 import React from 'react';
-import './loginstyle.css';
-import { Link,useNavigate  } from 'react-router-dom';
+import '../login/loginstyle.css';
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignIn, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faSignIn, faEye,faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
-const Login = () => {
-//   const history=UseHistory();
-  const navigate=useNavigate();
-  const intialValue = { email: '', password: '' ,showPassword:false};
+const Register = () => {
+  const intialValue = { email: '', password: '' };
   const [formInput, setFormInput] = useState(intialValue);
   const [formErrors,setFormErrors]=useState({});
-  const [isSubmitted,setIsSubmitted]=useState(false);
 
-  const handleChlickShowPassword = () => {
-    setFormInput({ ...formInput, showPassword: !formInput.showPassword });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  }
 
   const handleChange = e => {
     const {name, value} = e.target;
@@ -29,9 +19,6 @@ const Login = () => {
   const handleSubmit=(e)=>{
     e.preventDefault();
     setFormErrors(validate(formInput));
-    setIsSubmitted(true);
-if(Object.keys(formErrors).length ===0 && isSubmitted) { /*history.push("/user");*/ navigate("/user");}
-
   }
 
   const validate=(formInput)=>{
@@ -59,12 +46,11 @@ if(Object.keys(formErrors).length ===0 && isSubmitted) { /*history.push("/user")
 
   return (
     <div className="login-page">
-        {/* {Object.keys(formErrors).length ===0 && isSubmitted && <Link to="/user"></Link>} */}
       {/* <pre>{JSON.stringify(formInput, undefined, 2)}</pre> */}
       <div className="login-header ">
-        <h1>Sign in to your account</h1>
+        <h1>Register your account</h1>
       </div>
-      <div className="form">
+      <div className="form ">
         <form onSubmit={handleSubmit}>
           <div className="input-box">
             <label for="email">Email</label>
@@ -77,11 +63,11 @@ if(Object.keys(formErrors).length ===0 && isSubmitted) { /*history.push("/user")
               onChange={handleChange}
             />
           </div>
-          {formErrors.email && <p id="error">{formErrors.email}</p>}
+          <p id="error">{formErrors.email}</p>
           <div className="input-box">
-            <label for="password">Password</label>
+            <label for="password">New Password</label>
             <input
-              type={formInput.showPassword ? "text":"password"}
+              type="password"
               placeholder="Type password"
               id="password"
               name="password"
@@ -89,30 +75,45 @@ if(Object.keys(formErrors).length ===0 && isSubmitted) { /*history.push("/user")
               onChange={handleChange}
             />
             <span className="password-toggle-icon">
-              <FontAwesomeIcon className="i" icon={faEye} onClick={handleChlickShowPassword} onMouseDown={handleMouseDownPassword}/>
+              <FontAwesomeIcon className="i" icon={faEye}/>
             </span>
           </div>
-         {formErrors.password && <p id="error">{formErrors.password}</p>}
+          <p id="error">{formErrors.password}</p>
+          <div className="input-box">
+            <label for="confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              placeholder="Type password"
+              id="confirm-password"
+              name="password"
+              value={formInput.password}
+              onChange={handleChange}
+            />
+            <span className="password-toggle-icon">
+              <FontAwesomeIcon className="i" icon={faEye}/>
+            </span>
+          </div>
+          <p id="error">{formErrors.password}</p>
           <div className="forgot">
             <label>
-              <Link to="/forgot"> Forgot Password? </Link>
+            <FontAwesomeIcon class="i" icon={faCircleInfo}/> Try to use strong password with number and characters.
             </label>
           </div>
           <div className="btn">
             <button type="submit" id="loginbtn">
-              <FontAwesomeIcon className="i" icon={faSignIn}/> Sign in
+              <FontAwesomeIcon className="i" icon={faSignIn}/> Reigster
             </button>
           </div>
         </form>
       </div>
       <div className="register">
         <p>
-          Don't have an account?
-          <Link to="/register"> Register! </Link>
+          Don you already have an account?
+          <Link to="/login"> Login! </Link>
         </p>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;

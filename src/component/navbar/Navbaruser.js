@@ -12,7 +12,6 @@ const Navbaruser=()=>{
                 <h1> Shaheed Ziaur Rahman Hall</h1>
             </div>
             <div className="nav-right">
-               
                 <div className="user">
                     <button className="nav-login ">
                     <img className="logo-img" src={process.env.PUBLIC_URL + 'images.png'}/>
