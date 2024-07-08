@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './noticestyle.css';
 import Contact from '../contactus/contact'
+import './noticestyle.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faEye } from '@fortawesome/free-solid-svg-icons';
 

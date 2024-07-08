@@ -1,11 +1,4 @@
-.option .notice-bnt{
-    color: #878e99;
-    text-decoration: none;
-}
-  .option .recent-event-bnt{
-    color: #081c3b;
-    text-decoration: underline;
-  }
+
 /* Event */
   .event .event-text h3 {
     font-family: Montserrat;

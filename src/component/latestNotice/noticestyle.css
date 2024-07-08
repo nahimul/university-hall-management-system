@@ -1,14 +1,7 @@
 
 /* Notice Board */
 
-/* .option .recent-event-bnt{
-  color:  #878e99;;
-  text-decoration: none;
-}
-.option .notice-bnt{
-  color: #081c3b;
-  text-decoration: underline;
-} */
+
 
 .notice-container {
     display: flex;
@@ -62,8 +55,8 @@
     width: 60px;
     justify-content: space-between;
   }
-  .notice i:hover{
-    transform:scal(1.01);
+  .notice .i:hover{
+    transform:scale(1.1);
     color:#081c3b;
     cursor: pointer;
   }

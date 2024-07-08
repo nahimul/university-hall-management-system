@@ -1,107 +1,142 @@
 import React from 'react';
-import '../login/loginstyle.css';
+import './register.css';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import { IconButton, InputAdornment, Input, TextField } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignIn, faEye,faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { faSignIn, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
 const Register = () => {
-  const intialValue = { email: '', password: '' };
+  const intialValue = { email: '', password: '', confirmPassword: '' };
   const [formInput, setFormInput] = useState(intialValue);
-  const [formErrors,setFormErrors]=useState({});
+  const [formErrors, setFormErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  const handleChlickShowPassword = e => {
+    setShowPassword(!showPassword);
+  };
+  const handleMouseDownPassword = event => {
+    event.preventDefault();
+  };
+  const handleChlickShowConfirmPassword = e => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+  const handleMouseDownConfirmPassword = event => {
+    event.preventDefault();
+  };
 
   const handleChange = e => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     setFormInput({ ...formInput, [name]: value });
   };
 
-  const handleSubmit=(e)=>{
+  const handleSubmit = e => {
     e.preventDefault();
     setFormErrors(validate(formInput));
-  }
+  };
 
-  const validate=(formInput)=>{
-    const errors={};
-    const regex=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if(!formInput.email){
-        errors.email="Email is Required!";
-    }
-    else if(!regex.test(formInput.email)){
-        errors.email="This is not a valid email format!";
+  const validate = formInput => {
+    const errors = {};
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    if (!formInput.email) {
+      errors.email = 'Email is Required!';
+    } else if (!regex.test(formInput.email)) {
+      errors.email = 'This is not a valid email format!';
     }
 
-    if(!formInput.password){
-        errors.password="Password is required!";
+    if (!formInput.password) {
+      errors.password = 'Password is required!';
+    } else if (formInput.password.length < 6) {
+      errors.password = 'Password must be more than 6 characters!';
+    } else if (formInput.password.length > 10) {
+      errors.password = 'Password cannot exceed more than 10 characters!';
     }
-    else if(formInput.password.length<6){
-        errors.password="Password must be more than 6 characters!";
-    }
-    else if(formInput.password.length>10){
-        errors.password="Password cannot exceed more than 10 characters!";
+    if (formInput.confirmPassword !== formInput.password) {
+      errors.confirmPassword = 'Password does not match!';
     }
 
     return errors;
-  }
+  };
 
   return (
     <div className="login-page">
       {/* <pre>{JSON.stringify(formInput, undefined, 2)}</pre> */}
       <div className="login-header ">
-        <h1>Register your account</h1>
+        <h1>Set New Password </h1>
       </div>
       <div className="form ">
         <form onSubmit={handleSubmit}>
-          <div className="input-box">
-            <label for="email">Email</label>
-            <input
-              type="text"
-              placeholder="Write email "
-              id="email"
-              name="email"
-              value={formInput.email}
-              onChange={handleChange}
-            />
-          </div>
+          <TextField
+            type="text"
+            label="Write email "
+            id="in"
+            name="email"
+            value={formInput.email}
+            onChange={handleChange}
+          />
           <p id="error">{formErrors.email}</p>
-          <div className="input-box">
-            <label for="password">New Password</label>
-            <input
-              type="password"
-              placeholder="Type password"
-              id="password"
-              name="password"
-              value={formInput.password}
-              onChange={handleChange}
-            />
-            <span className="password-toggle-icon">
-              <FontAwesomeIcon className="i" icon={faEye}/>
-            </span>
-          </div>
+          <TextField
+            type={showPassword ? 'text' : 'password'}
+            label="Type password"
+            id="in"
+            name="password"
+            value={formInput.password}
+            onChange={handleChange}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    onClick={handleChlickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? (
+                      <VisibilityOutlinedIcon />
+                    ) : (
+                      <VisibilityOffOutlinedIcon />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
           <p id="error">{formErrors.password}</p>
-          <div className="input-box">
-            <label for="confirm-password">Confirm Password</label>
-            <input
-              type="password"
-              placeholder="Type password"
-              id="confirm-password"
-              name="password"
-              value={formInput.password}
-              onChange={handleChange}
-            />
-            <span className="password-toggle-icon">
-              <FontAwesomeIcon className="i" icon={faEye}/>
-            </span>
-          </div>
-          <p id="error">{formErrors.password}</p>
+          <TextField
+            type={showConfirmPassword ? 'text' : 'password'}
+            label="Confirm password"
+            id="in"
+            name="confirmPassword"
+            value={formInput.confirmPassword}
+            onChange={handleChange}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    onClick={handleChlickShowConfirmPassword}
+                    onMouseDown={handleMouseDownConfirmPassword}
+                  >
+                    {showConfirmPassword ? (
+                      <VisibilityOutlinedIcon />
+                    ) : (
+                      <VisibilityOffOutlinedIcon />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+          <p id="error">{formErrors.confirmPassword}</p>
           <div className="forgot">
             <label>
-            <FontAwesomeIcon class="i" icon={faCircleInfo}/> Try to use strong password with number and characters.
+              <FontAwesomeIcon class="i" icon={faCircleInfo} /> Try to use
+              strong password with number and characters.
             </label>
           </div>
           <div className="btn">
             <button type="submit" id="loginbtn">
-              <FontAwesomeIcon className="i" icon={faSignIn}/> Reigster
+              <FontAwesomeIcon className="i" icon={faSignIn} /> Reigster
             </button>
           </div>
         </form>

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './style.css';
 import EventContainer from './eventcontainer'; 
+import './style.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Events = () => {
 
@@ -11,7 +13,7 @@ const Events = () => {
       <div className="event-details event">
         <Link to="/Home">
           <button className="back" type="'submit">
-            <i className="fa fa-arrow-left" aria-hidden="true"></i> Go Back
+            <FontAwesomeIcon className="i" icon={faArrowLeft} aria-hidden="true"/> Go Back
           </button>
         </Link>
         <div className="details">
@@ -54,7 +56,10 @@ const Events = () => {
           </div>
         </div>
       </div>
+      <div className="hide-contact">
       <EventContainer/>
+      </div>
+
     </>
   );
 };

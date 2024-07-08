@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './containerstyle.css';
 import Contact from '../contactus/contact';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
 
 const EventContainer = () => {
 
@@ -14,7 +16,7 @@ const EventContainer = () => {
         </div>
         <div className="event-text">
             <p className="date">
-                <i className="far fa-calendar-check"></i> 01 July 2024
+                <FontAwesomeIcon className="i" icon={faCalendarCheck}/> 01 July 2024
             </p>
             <h3>Event Title</h3>
             <p>

@@ -39,7 +39,7 @@ color:#081C3B;
         gap: 10px;
     }
 
-.container .contact {
+.hide-contact .contact {
     display:none;
 }
   

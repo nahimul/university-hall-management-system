@@ -1,16 +1,24 @@
 import React from 'react';
 import '../login/loginstyle.css';
 import { Link } from 'react-router-dom';
+import { TextField, InputAdornment, IconButton } from '@mui/material';
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignIn, faEye,faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
 const Register = () => {
-  const intialValue = { email: '', password: '' };
   const [formInput, setFormInput] = useState(intialValue);
   const [formErrors,setFormErrors]=useState({});
 
+  const handleChlickShowPassword = () => {
+    setFormInput({ ...formInput, showPassword: !formInput.showPassword });
+  };
 
+  const handleMouseDownPassword = event => {
+    event.preventDefault();
+  };
   const handleChange = e => {
     const {name, value} = e.target;
     setFormInput({ ...formInput, [name]: value });
@@ -20,6 +28,11 @@ const Register = () => {
     e.preventDefault();
     setFormErrors(validate(formInput));
   }
+
+  const changeBorder = {
+    border: '1px solid red',
+    borderRadius: '5px'
+  };
 
   const validate=(formInput)=>{
     const errors={};
@@ -51,34 +64,51 @@ const Register = () => {
         <h1>Register your account</h1>
       </div>
       <div className="form ">
-        <form onSubmit={handleSubmit}>
-          <div className="input-box">
-            <label for="email">Email</label>
-            <input
-              type="text"
-              placeholder="Write email "
-              id="email"
-              name="email"
-              value={formInput.email}
-              onChange={handleChange}
-            />
-          </div>
-          <p id="error">{formErrors.email}</p>
-          <div className="input-box">
+      <form onSubmit={handleSubmit}>
+          <>
+            <div className="input-box">
+              <label for="email">Email</label>
+              <input
+                type="text"
+                placeholder="Write email "
+                id="email"
+                name="email"
+                value={formInput.email}
+                onChange={handleChange}
+                style={formErrors.email && changeBorder}
+              />
+            </div>
+            {formErrors.email && <p id="error">{formErrors.email}</p>}
+          </>
+          <div className="pass">
             <label for="password">Password</label>
-            <input
-              type="password"
+            <TextField
+              type={formInput.showPassword ? 'text' : 'password'}
               placeholder="Type password"
               id="password"
               name="password"
               value={formInput.password}
               onChange={handleChange}
+              style={formErrors.password && changeBorder}
+              InputProps={{ style: { width: '100%' },
+                endAdornment: (
+                  <InputAdornment position="end">
+                  <IconButton
+                    onClick={handleChlickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {formInput.showPassword ? (
+                      <VisibilityOutlinedIcon />
+                    ) : (
+                      <VisibilityOffOutlinedIcon />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              )
+              }}
             />
-            <span className="password-toggle-icon">
-              <FontAwesomeIcon className="i" icon={faEye}/>
-            </span>
           </div>
-          <p id="error">{formErrors.password}</p>
+          {<p id="error">{formErrors.password}</p>}
           <div className="forgot">
             <label>
             <FontAwesomeIcon class="i" icon={faCircleInfo}/> Try to use strong password with number and characters.
