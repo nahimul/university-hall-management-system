@@ -1,12 +1,11 @@
 import React from 'react';
-import './register.css';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import { IconButton, InputAdornment, Input, TextField } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignIn, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import './forgotstyle.css';
 
 const Register = () => {
   const intialValue = { email: '', password: '', confirmPassword: '' };
@@ -77,10 +76,11 @@ const Register = () => {
             value={formInput.email}
             onChange={handleChange}
           />
-          <p id="error">{formErrors.email}</p>
+        {<p id="error">{formErrors.email}</p>}
+          
           <TextField
             type={showPassword ? 'text' : 'password'}
-            label="Type password"
+            label="Type New password"
             id="in"
             name="password"
             value={formInput.password}
@@ -102,7 +102,7 @@ const Register = () => {
               ),
             }}
           />
-          <p id="error">{formErrors.password}</p>
+         { <p id="error">{formErrors.password}</p>}
           <TextField
             type={showConfirmPassword ? 'text' : 'password'}
             label="Confirm password"
@@ -127,16 +127,16 @@ const Register = () => {
               ),
             }}
           />
-          <p id="error">{formErrors.confirmPassword}</p>
+        {<p id="error">{formErrors.confirmPassword}</p>}
           <div className="forgot">
-            <label>
-              <FontAwesomeIcon class="i" icon={faCircleInfo} /> Try to use
-              strong password with number and characters.
-            </label>
+            <InfoOutlinedIcon className="i"/>
+            <p>
+            Try to use strong password with number and characters.
+            </p>
           </div>
           <div className="btn">
             <button type="submit" id="loginbtn">
-              <FontAwesomeIcon className="i" icon={faSignIn} /> Reigster
+                Reset Password
             </button>
           </div>
         </form>
