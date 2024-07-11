@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import { TextField, InputAdornment, IconButton } from '@mui/material';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignIn, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,7 +15,6 @@ const Login = () => {
   const intialValue = { email: '', password: '', showPassword: false };
   const [formInput, setFormInput] = useState(intialValue);
   const [formErrors, setFormErrors] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChlickShowPassword = () => {
     setFormInput({ ...formInput, showPassword: !formInput.showPassword });
@@ -32,9 +32,16 @@ const Login = () => {
   const handleSubmit = e => {
     e.preventDefault();
     setFormErrors(validate(formInput));
-    setIsSubmitted(true);
-    if (Object.keys(formErrors).length === 0 && isSubmitted) {
-      /*history.push("/user");*/ navigate('/user');
+    if (Object.keys(formErrors).length === 0 ) {
+       axios.post('http://localhost:3001/login', formInput)
+       .then(res => {console.log(res)
+        if(res.data==="Success")
+          {
+            navigate('/user');
+          }
+         else if(res.data.message){
+          alert(res.data.message)
+       }}).catch(err => console.log(err));
     }
   };
 
@@ -49,14 +56,10 @@ const Login = () => {
 
     if (!formInput.password) {
       errors.password = 'Password is required!';
-    } else if (formInput.password.length < 6) {
-      errors.password = 'Password must be more than 6 characters!';
-    } else if (formInput.password.length > 10) {
-      errors.password = 'Password cannot exceed more than 10 characters!';
-    }
-
+    } 
     return errors;
   };
+  
   const changeBorder = {
     border: '1px solid red',
     borderRadius: '5px'
