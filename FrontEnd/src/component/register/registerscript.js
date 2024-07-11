@@ -6,6 +6,7 @@ import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined
 import { useState, useEffect } from 'react';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import './register.css';
+import axios from 'axios';
 
 const Register = () => {
   const intialValue = {
@@ -13,6 +14,7 @@ const Register = () => {
     department: '',
     session: '',
     roll: '',
+    registration: '',
     mobile: '',
     email: '',
     password: '',
@@ -40,9 +42,11 @@ const Register = () => {
     setFormErrors(validate(formInput));
     setIsSubmitted(true);
     if(Object.keys(formErrors).length===0 && isSubmitted){
+      axios.post('http://localhost:3001/register',formInput)
+      .then(res=>console.log(res))
+      .catch(err=>console.log(err))
       navigate('/login');
     }
-
   };
 
   const changeBorder = {
