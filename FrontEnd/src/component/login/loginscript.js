@@ -38,6 +38,7 @@ const Login = () => {
         if(res.data==="Success")
           {
             navigate('/user');
+            alert("Login Successfull");
           }
          else if(res.data.message){
           alert(res.data.message)
