@@ -1,24 +1,42 @@
+.allote-complain button{
+background:#002F9D;
+height: 40px;
+font-family: Montserrat;
+padding: 12px 36px 12px 36px;
+border-radius: 12px;
+font-weight: 600;
+font-size: 16px;
+}
 .option {
     display: flex;
-    justify-content: start;
-    gap: 20px;
-    margin: 40px 0 0 132px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 132px;
   }
-  .option button {
+  .option .toggle button {
     background-color: inherit;
     border-style: none;
     font-family: Montserrat;
     font-size: 20px;
     font-weight: 100px;
-    line-height: 20px;
     text-align: left;
     color: #878e99;
     text-decoration: none;
   }
   
-.option button:hover {
+.option .toggle button:hover {
     color: #081c3b;
-    text-decoration: underline;
+    transform: scale(1.1);
   }
+  .allote-complain button:hover{
+    transform: scale(1.1);
+    }
 
-  
+.container{
+      display: flex;
+      justify-content:space-between;
+      align-items:start;
+      margin: 50px 132px;
+      gap: 10px;
+    }
+    

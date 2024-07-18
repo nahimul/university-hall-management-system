@@ -9,6 +9,7 @@ import Login from "./component/login/loginscript";
 import Register from "./component/register/registerscript";
 import User from "./component/personal-info/personalinfoscript";
 import Forget from "./component/register/Forget";
+import AllotmentForm from "./component/allotmentform/allotmentform";
 
 function App() {
 
@@ -41,6 +42,9 @@ function App() {
     {
       path:"/forgot",
       element:<><Navbaruser/><Forget/></>
+    },{
+      path:"/allotmentform",
+      element:<><Navbaruser/><AllotmentForm/></>
     }
   ]
   );

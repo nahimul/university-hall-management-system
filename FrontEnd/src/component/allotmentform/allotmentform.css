@@ -1,0 +1,50 @@
+
+.allotmentform .back{
+    align-items: center;
+    background:inherit;
+    border: none;
+    gap: 4px;
+    font-family: Montserrat;
+   font-size: 16px;
+   color:#081C3B;
+}
+ h3{
+    margin-bottom:10px;
+ }
+.type , .application{
+    width:100%;
+}
+.allotmentform button:hover{
+    /* zoom in */
+    transform: scale(1.1);
+    cursor: pointer;
+}
+#in{
+    width:500px;
+height: 40px;
+padding: 8px 12px 8px 12px;
+gap: 10px; 
+border-radius: 8px;
+}
+.action button{
+  margin-right:20px;
+  background: #002F91;
+  width: 133px;
+height: 40px;
+border-radius: 12px;
+}
+.action .reset{
+    background-color: inherit;
+}
+
+.allotmentform{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width:100%;
+    margin:50px 132px;
+    gap:10px;
+}
+
+

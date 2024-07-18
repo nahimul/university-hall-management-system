@@ -1,0 +1,43 @@
+
+/* Event */
+  .event .event-text h3 {
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28.8px;
+    text-align: left;
+    color: #081c3b;
+    padding: 10px 0;
+  }
+  .event .event-text p a {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    text-align: left;
+    color: #081c3b;
+  }
+  
+  .event-image img {
+    width: 274px;
+    height: 182px;
+    border-radius: 5px;
+  }
+  .event {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 20px;
+    background: #f6faff;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .event-container {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    width:100%;
+    gap: 10px;
+  }
+  
