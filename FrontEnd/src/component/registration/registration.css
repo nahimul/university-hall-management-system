@@ -1,0 +1,67 @@
+.register-page #error{
+    color: red;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: left;
+    padding-bottom:5px;
+}
+.register-page h1{
+    text-align: left;
+    font-family: Montserrat;
+    font-size: 40px;
+    font-weight: 600;
+    color: #081C3B;
+}
+
+
+.register-page .forgot {
+    display: flex;
+    align-items: center;
+    color: #002F91;
+    font-family: Montserrat;
+    font-size: 12px;
+    text-align: left;
+} 
+
+.btn button {
+    width: 100%;
+    height: 60px;
+    border-radius: 12px;
+    border:none;
+    background: #002F91;
+    cursor: pointer;
+    font-family: Montserrat;
+    font-weight: 600;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.register-page a {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-page a:hover {
+    text-decoration: underline;
+    color:#002F91;
+    font-weight: 600;
+}
+.registration form{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    gap:5px;
+}
+
+.register-page{
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto;
+    width: 376px;
+    gap:10px;
+}
+
+.register p{
+    text-align: center;
+}

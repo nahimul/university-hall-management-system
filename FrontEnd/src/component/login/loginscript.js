@@ -131,10 +131,10 @@ const Login = () => {
           </div>
         </form>
       </div>
-      <div className="register">
+      <div className="registration">
         <p>
           Don't have an account?
-          <Link to="/register"> Register! </Link>
+          <Link to="/registration"> Register! </Link>
         </p>
       </div>
     </div>

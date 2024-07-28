@@ -108,3 +108,7 @@ label{
     margin: 5rem auto 0;
     color: #081C3B;
 }
+.registration p{
+    text-align: center;
+    margin-bottom: 40px;
+}

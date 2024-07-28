@@ -1,0 +1,31 @@
+.option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 132px;
+}
+.option .toggle button {
+  background-color: inherit;
+  border-style: none;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 100px;
+  text-align: left;
+  color: #878e99;
+  text-decoration: none;
+}
+
+.option .toggle button:hover {
+  color: #081c3b;
+  transform: scale(1.1);
+}
+
+.home-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+}
+.trans:hover {
+  transform: scale(1.01);
+}

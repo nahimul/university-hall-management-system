@@ -1,0 +1,70 @@
+.title input{
+    width:100%;
+}
+/* .event-form .title, .date {
+   display: flex;
+   align-items: center;
+} */
+.event-form input{
+    border:none;
+    border:1px solid #c4c2cc;
+    height: 30px;
+    padding:5px;
+    font-size:16px;
+    border-radius: 8px;
+}
+
+.title-date{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+.event-form .time-date{
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+#desc{
+    width:99%;
+    border:none;
+    border:1px solid #c4c2cc;
+    height: 300px;
+    padding:5px;
+    font-size:16px;
+    margin:10px auto;
+}
+.event-form .form label{
+    margin:10px 10px 10px 0px;
+    font-size:25px;
+}
+.action-addevent button{
+    margin:20px 20px 0px 0px;
+    width: 133px;
+    height: 40px;
+    border:none;
+    border-radius: 12px;
+    font-size:18px;
+    font-weight: 600;
+}
+.action-addevent .delete{
+    background: rgb(104, 27, 27);
+}
+.action-addevent .cancel{
+    background: #002F91;
+}
+.action-addevent .submit{
+    background: green;
+}
+
+.event-form{
+    display: flex;
+    flex-direction: column;
+    font-family: Montserrat;
+    padding:10px;
+    width:1200px;
+}
+.event-form #errors{
+    color:red;
+    font-size: 12px;
+    margin:0 0 0 80px;
+}

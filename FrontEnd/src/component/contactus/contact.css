@@ -16,7 +16,7 @@
       border: 1px solid #c4c2cc;
       padding: 24px;
       border-radius: 8px;
-      width:350px;
+      width:345px;
     }
   .container .trans:hover {
     transform: scale(1.01);

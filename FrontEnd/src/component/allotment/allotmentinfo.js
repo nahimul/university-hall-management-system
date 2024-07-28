@@ -25,12 +25,12 @@ const AllotmentInfo = () => {
               </tr>
 
               <tr>
-                <td>Emergency Contact Persion</td>
+                <td>Emergency Contact Person</td>
                 <td>: Rahik bhai ( Brother )</td>
               </tr>
               <tr>
-                <td>Emergency Contact Persion Number</td>
-                <td>: 01774366602</td>
+                <td>Emergency Contact Person Number</td>
+                <td>: 017******02</td>
               </tr>
               <tr>
                 <td>Latest Result</td>

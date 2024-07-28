@@ -1,0 +1,64 @@
+/* Styling on event details */
+body{
+  font-family: Montserrat;
+  color:#081C3B;
+}
+.event-details .back{
+  background:inherit;
+  border: none;
+  text-align:center;
+  font-family: Montserrat;
+  font-size: 16px;
+  color:#081C3B;
+}
+
+
+
+.event-details .event-image img {
+  width: 100%;
+  height: 420px;
+    border-radius: 8px ;
+    margin:10px 0;
+  }
+  
+  
+  /* Event */
+  .event-image img {
+    width: 274px;
+    height: 182px;
+    border-radius: 5px;
+  }
+  .event-details .event-text h3 {
+      font-size: 40px;
+      margin:20px 0;
+      font-family: Montserrat;
+      color:#081C3B;;
+    }
+  .event-details .event-text p {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+    color: #081c3b;
+  }
+  
+
+  
+  .event-details button:hover{
+    /* zoom in */
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  
+  
+  .event-details{
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    background:white;
+    margin-bottom:20px;
+  }
+  
+  .details-container{
+    margin: 50px 132px;
+  }

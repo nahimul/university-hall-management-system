@@ -32,11 +32,13 @@ font-size: 16px;
     transform: scale(1.1);
     }
 
-.container{
+.home-container{
       display: flex;
       justify-content:space-between;
       align-items:start;
       margin: 50px 132px;
       gap: 10px;
     }
-    
+.trans:hover{
+  transform: scale(1.01);
+}

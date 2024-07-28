@@ -8,7 +8,7 @@ import './home.css';
 
 const Home = () => {
   const [page, setPage] = useState(true);
-  const [residence, setResidence] = useState(false);
+  const [residence, setResidence] = useState(true);
   // const handlePage=(e)=>{
   //     setPage(e.target.value)
   // };
@@ -65,15 +65,13 @@ const Home = () => {
           </button>
         </div>
         <div className="allote-complain">
-        {residence?  complain : allotment }
+          {residence ? complain : allotment}
         </div>
       </div>
-      <div className="container">
-
-      {/* ternary oparatior */}
-      {page ? <EventContainer /> : <NoticeBoard />}
-    <Contact />
-
+      <div className="home-container">
+        {/* ternary oparatior */}
+        {page ? <EventContainer /> : <NoticeBoard />}
+        <Contact />
       </div>
     </div>
   );

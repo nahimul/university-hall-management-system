@@ -16,15 +16,12 @@ font-size: 32px;
   .filer{
     height:40px;
   width:40px;
-
   }
-
   .select-year{
     display:flex;
     gap:10px;
     align-items: baseline;
   }
-
   .fees-data-table table {
     width: 100%;
     border-collapse: collapse;

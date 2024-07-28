@@ -1,36 +1,25 @@
 
 /* Notice Board */
+*{
+  font-family: Montserrat;
+}
 .notice .date {
-  width: 135px;
-    padding: 12px 16px 12px 16px;
+    width:135px;
     border-right: 1px solid #c4c2cc;
-    height: 32px;
+    padding: 12px 16px 12px 16px;
   }
   .notice .date-mn {
-    font-family: Montserrat;
+    
     font-size: 16px;
     font-weight: 600;
     text-align: left;
     color: #081c3b;
   }
   .notice .time {
-    font-family: Montserrat;
     font-size: 14px;
     font-weight: 400;   
     text-align: left;
     color: #081c3b;
-  }
-  .notice .title {
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 16px;
-    text-align: left;
-    color: #081c3b;
-  }
-  .notice .eye-dwn {
-    display: flex;
-    justify-content: space-between;
   }
   .notice .i:hover{
     transform:scale(1.1);
@@ -42,25 +31,39 @@
     background-color: inherit;
     color: #878e99;
   }
-  .notice .title-eye-dwn {
+  .notice .eye-dwn {
     display: flex;
     justify-content: space-between;
-    gap:50px;
-    padding: 12px 20px 12px 12px;
-    }
+  }
+  .notice .title {
+    padding: 12px 16px 12px 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #081c3b;
+  }
+ .title-eye-dwn{
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:15px 5px;
+
+ }
   .notice {
     display: flex;
     justify-content:start;
     align-items: center;
     background: #f6faff;
-    padding: 10px;
     border-radius: 8px;
+    width:100%;
   }
+  
   .notice-container {
       display: flex;
       justify-content: start;
       flex-direction: column;
       align-items: start;
+      width:100%;
       gap: 10px;
     }
     
