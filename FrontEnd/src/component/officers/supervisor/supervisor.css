@@ -1,0 +1,40 @@
+.supervisor .complains img{
+    border:2px solid #c4c2cc;
+   border-radius: 50%;
+   width:70px;
+}
+.supervisor .complains .user-complain{
+ display:flex;
+ flex-direction: column;
+ gap:20px;
+}
+.supervisor .complains .user-complain .complainbox{
+    border: 1px solid #c4c2cc;
+    padding:8px;
+    border-radius: 8px;
+    height:100px;
+    width:500px;
+   }
+
+.supervisor .complains .user-complain .reply-button{
+    border:none;
+    background:none ;
+    color: black;
+   }
+.supervisor .complains .user-complain input{
+        height:20px;
+        padding:5px;
+   }
+
+
+.supervisor .complains{
+    display:flex;
+    gap:15px;
+}
+
+.supervisor {
+    display:flex;
+    flex-direction: column;
+    gap:30px;
+    margin:50px 132px;
+}

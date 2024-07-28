@@ -6,9 +6,16 @@ import Home from "./component/home/home";
 import Navbar from "./component/navbar/Navbar";
 import Navbaruser from './component/navbar/Navbaruser'; 
 import Login from "./component/login/loginscript";
-import Register from "./component/register/registerscript";
+import Registration from "./component/registration/registerscript";
 import User from "./component/personal-info/personalinfoscript";
-import Forget from "./component/register/Forget";
+import Forget from "./component/registration/Forget";
+import AllotmentForm from "./component/allotmentform/allotmentform";
+import ComplainBox from "./component/complain/complainbox";
+import OfficersLogin from "./component/officers/login/login"
+import OfficersRegistration from "./component/officers/registration/register"
+import Officers from "./component/officers/employee/employee"
+import Register from "./component/officers/register/register"
+import Supervisor from './component/officers/supervisor/supervisor';
 
 function App() {
 
@@ -30,8 +37,8 @@ function App() {
       element:<><Navbar/><Login/></>
     },
     {
-      path:"/register",
-      element:<><Navbar/><Register/></>
+      path:"/registration",
+      element:<><Navbar/><Registration/></>
     }
     ,
     {
@@ -41,6 +48,27 @@ function App() {
     {
       path:"/forgot",
       element:<><Navbaruser/><Forget/></>
+    },{
+      path:"/allotmentform",
+      element:<><Navbaruser/><AllotmentForm/></>
+    },{
+      path:"/complainbox",
+      element:<><Navbaruser/><ComplainBox/></>
+    },{
+      path:"/officerslogin",
+      element:<><Navbaruser/><OfficersLogin/></>
+    },{
+      path:"/officersregistration",
+      element:<><Navbaruser/><OfficersRegistration/></>
+    },{
+      path:"/officers",
+      element:<><Navbaruser/><Officers/></>
+    },{
+      path:"/register",
+      element:<><Navbaruser/><Register/></>
+    },{
+      path:"/supervisor",
+      element:<><Navbaruser/><Supervisor/></>
     }
   ]
   );

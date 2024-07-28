@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
-import Login from '../login/loginscript';
-
 const Navbar=()=>{
     return (
         <div className="nav-bar">
@@ -24,7 +22,7 @@ const Navbar=()=>{
                     </button> 
                     <ul className="login-sub-menu sub-menu">
                         <li><Link to="/login">Student</Link></li>
-                        <li><Link to="/login">Officers</Link></li>
+                        <li><Link to="/officerslogin">Officers</Link></li>
                         <li><Link to="/login">Admin</Link></li>
                     </ul>   
                 </div>

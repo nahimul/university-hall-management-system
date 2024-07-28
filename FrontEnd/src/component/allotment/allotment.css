@@ -1,0 +1,54 @@
+/*css for allotment page*/
+h2{
+  font-family: Montserrat;
+font-size: 32px;
+}
+.hall-info table {
+    width: 80%;
+    height: 240px;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 24px;
+    font-family: Montserrat;
+    color: #081c3b;
+    text-align: left;
+  }
+  .filer{
+    height:40px;
+  width:40px;
+  }
+  .select-year{
+    display:flex;
+    gap:10px;
+    align-items: baseline;
+  }
+  .fees-data-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 24px;
+    font-family: Montserrat;
+    color: #081c3b;
+    text-align: left;
+  }
+  .fees-data-table th , .fees-data-table td{
+    padding: 10px;
+  }
+  .fees-data-table td{
+    border-top: 1px solid #CED2D8;
+  }
+   button{
+    background-color: #081c3b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  .fees-data-table{
+    border: 1px solid #CED2D8;
+    padding:0px 10px;
+    border-radius: 5px;
+  }
+  /* .fees-data-table tr:nth-child(even) {background-color: #f2f2f2;} */

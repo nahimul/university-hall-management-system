@@ -1,0 +1,72 @@
+*{
+    font-family: Montserrat;
+}
+
+.allotmentform .back{
+    align-items: center;
+    background:inherit;
+    border: none;
+   font-size: 16px;
+   color:#081C3B;
+}
+ h1{
+    margin-bottom:10px;
+
+ }
+.date , .application{
+    width:100%;
+}
+.allotmentform #in, textarea{
+    width:100%;
+    height:40px;
+    padding:10px;
+    font-size:16px;
+   font-size: 16px;
+   border:none;
+   border:1px solid #878e99;
+   border-radius: 8px;
+}
+textarea{
+    height:200px;
+}
+
+
+.action button{
+    margin-right:20px;
+    width: 133px;
+    height: 40px;
+    border:none;
+    background: #002F91;
+    border-radius: 12px;
+    font-size:18px;
+    font-weight: 600;
+}
+.action #cancel{
+    background:  #f6faff;
+    color:#002F91;
+    border: 1px solid #002F91;
+}
+.action #cancel:hover{
+    background: rgb(246, 54, 54);
+    color:white;
+    border:none;
+}
+.action #submit:hover{
+    background:green;
+}
+
+.allotmentform button:hover{
+    /* zoom in */
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.allotmentform{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin:50px 132px;
+    gap:10px;
+}
+
+

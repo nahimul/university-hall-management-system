@@ -1,0 +1,49 @@
+
+/* Event */
+*{
+  font-family: Montserrat;
+
+}
+.event-image img {
+  width: 274px;
+  height: 182px;
+  border-radius: 5px;
+}
+  .event .event-text h3 {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: left;
+    color: #081c3b;
+  }
+  .event .event-text p {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+    color: #081c3b;
+  }
+.event .event-text{
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+  gap:10px;
+  height: 182px;
+}
+  .event {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 20px;
+    background: #f6faff;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .event-container {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    width:100%;
+    gap: 10px;
+  }
+  
