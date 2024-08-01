@@ -36,7 +36,9 @@
     text-align: center;
     color: #FFFFFF;
 }
-
+.image-upload {
+    margin:5px 0;
+}
 .register-page a {
     text-decoration: none;
     font-weight: 500;

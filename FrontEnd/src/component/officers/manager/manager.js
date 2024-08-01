@@ -1,13 +1,13 @@
 import React from 'react';
-import { useState } from 'react';
-import AddNotice from './addNotice';
-import AddEvent from './addEvent';
-import { Link } from 'react-router-dom';
-import './register.css';
+import {useState} from 'react';
+import AlloteRequest from '../alloteRequest/alloterequest';
+import AllotedStudent from '../allotedStudent/allotedstudent'
+import './manager.css';
 
-const Register = () => {
-  const [page, setPage] = useState(true);
-  
+const Manager = () => {
+
+  const [residence, setResidence] = useState(true);
+
   const optionOff = {
     color: '#878e99',
     textDecoration: 'none',
@@ -19,35 +19,34 @@ const Register = () => {
 
   return (
     <div>
-      <div className="option">
+      <div className="option-manager">
         <div className="toggle">
           <button
             type="submit"
             className="recent-event-bnt"
             onClick={() => {
-              setPage(true);
+              setResidence(true);
             }}
-            style={page ? optionOn : optionOff}
+            style={residence ? optionOn : optionOff}
           >
-            Add Event
+            Alloted Student
           </button>
           <button
             type="submit"
             className="notice-bnt"
             onClick={() => {
-              setPage(false);
+              setResidence(false);
             }}
-            style={page ? optionOff : optionOn}
+            style={residence ? optionOff : optionOn}
           >
-            Add Notice
+            Allote Request
           </button>
         </div>
       </div>
       <div className="home-container">
-        {page ? <AddEvent /> : <AddNotice/>}
+        { residence ? <AllotedStudent /> : <AlloteRequest/>}
       </div>
     </div>
   );
 };
-
-export default Register;
+export default Manager;
