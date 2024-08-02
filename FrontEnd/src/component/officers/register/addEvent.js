@@ -84,7 +84,7 @@ const AddEvent = () => {
           {formErrors.description && <p id='errors'>{formErrors.description}</p>}
           <div className="upload">
             <label for="upload-file">Upload file: </label>
-            <input id="upload-file" type="upload" 
+            <input id="upload-file" type="file" 
              name='uploaded'
              value={event.uploaded}
              onChange={handleChange}/>

@@ -13,7 +13,7 @@ import AllotmentForm from "./component/allotmentform/allotmentform";
 import ComplainBox from "./component/complain/complainbox";
 import OfficersLogin from "./component/officers/login/login"
 import OfficersRegistration from "./component/officers/registration/register"
-import Officers from "./component/officers/employee/employee"
+import Manager from "./component/officers/manager/manager"
 import Register from "./component/officers/register/register"
 import Supervisor from './component/officers/supervisor/supervisor';
 
@@ -61,8 +61,8 @@ function App() {
       path:"/officersregistration",
       element:<><Navbaruser/><OfficersRegistration/></>
     },{
-      path:"/officers",
-      element:<><Navbaruser/><Officers/></>
+      path:"/manager",
+      element:<><Navbaruser/><Manager/></>
     },{
       path:"/register",
       element:<><Navbaruser/><Register/></>

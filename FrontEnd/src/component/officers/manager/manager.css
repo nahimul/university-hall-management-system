@@ -1,0 +1,21 @@
+.option-manager {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 132px;
+  }
+  .option-manager .toggle button {
+    background-color: inherit;
+    border-style: none;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 100px;
+    text-align: left;
+    color: #878e99;
+    text-decoration: none;
+  }
+  
+  .option-manager .toggle button:hover {
+    color: #081c3b;
+    transform: scale(1.1);
+  }

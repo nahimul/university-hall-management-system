@@ -18,8 +18,9 @@ const AllotedStudent=()=>{
         <td>{student.mobile}</td>
         <td>{student.allotedForm}</td>
         <td>{student.allotedExpire}</td>
+        <td></td>
       </tr>);}
-
+    
     return(
 
    <div className="students">
@@ -30,10 +31,11 @@ const AllotedStudent=()=>{
                 <th>STUDENT NAME</th>
                 <th>ROOM NO</th>
                 <th>MOBILE NO</th>
-                <th>ALLOTED FROM</th>
-                <th>ALLOTMENT EXPIRE</th>
+                <th>FEE INFO</th>
+                <th>EXPIRE</th>
                 <th>ACTION</th>
               </tr>
+              {}
               <Tr/>
               <Tr/>
             </tbody>

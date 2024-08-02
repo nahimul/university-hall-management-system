@@ -17,6 +17,7 @@ const Register = () => {
     registration: '',
     mobile: '',
     email: '',
+    avatar:'',
     password: '',
     showPassword: false,
   };
@@ -166,6 +167,12 @@ const Register = () => {
             onChange={handleChange}
           />
           {formErrors.email && <p id="error">{formErrors.email}</p>}
+
+          <div className='image-upload'>
+            <label for='image'>Upload your image: </label>
+            <input type='file'
+                id='image'/>
+          </div>
 
           <div className="pass">
             <TextField

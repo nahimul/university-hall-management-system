@@ -47,7 +47,7 @@ const AddNotice = () => {
 
   return (
     <div className="event-form">
-        <pre>{JSON.stringify(notice, undefined, 2)}</pre> 
+      {/* <pre>{JSON.stringify(notice, undefined, 2)}</pre>  */}
       <h1>Add a new notice</h1>
       <div className="form">
         <form onSubmit={handleSubmit}>
@@ -86,7 +86,7 @@ const AddNotice = () => {
           </div>
           <div className="upload">
             <label for="upload-file">Upload file: </label>
-            <input id="upload-file" type="upload" 
+            <input id="upload-file" type="file" 
              name='uploaded'
              value={notice.uploaded}
              onChange={handleChange}/>
