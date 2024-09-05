@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './personalinfostyle.css';
-import Contact from '../contactus/contact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import AllotmentInfo from '../allotment/allotmentinfo';
+import './personalinfostyle.css';
 
 const UserInfo = () => {
   return (
@@ -29,8 +28,8 @@ const UserInfo = () => {
             <div className="name">
               <h1 className="name">Md. Nahimul Islam</h1>
             </div>
-            <div className="more-details">
-              <table>
+            <div >
+              <table className="details-table">
                 <tbody>
                   <tr>
                     <td>Student ID</td>

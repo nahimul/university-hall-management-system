@@ -6,7 +6,6 @@ const mongoose= require('mongoose');
 const {connectDB} = require('./db/index.js')
 const  {app} =require( './app.js');
 
-console.log('hello naim');
 
 connectDB()
 .then(()=>{

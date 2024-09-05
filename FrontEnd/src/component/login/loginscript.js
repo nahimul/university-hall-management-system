@@ -1,14 +1,13 @@
-import React from 'react';
-import './loginstyle.css';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import { TextField, InputAdornment, IconButton } from '@mui/material';
+import './loginstyle.css';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignIn, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-
+import { faSignIn } from '@fortawesome/free-solid-svg-icons';
+import {toast} from 'react-toastify';
 const Login = () => {
   //   const history=UseHistory();
   const navigate = useNavigate();
@@ -37,11 +36,11 @@ const Login = () => {
        .then(res => {console.log(res)
         if(res.data==="Success")
           {
+            toast("Login Successfull");
             navigate('/user');
-            alert("Login Successfull");
           }
          else if(res.data.message){
-          alert(res.data.message)
+          toast(res.data.message)
        }}).catch(err => console.log(err));
     }
   };

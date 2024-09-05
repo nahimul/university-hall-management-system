@@ -5,6 +5,7 @@ import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 
 const AllotmentInfo = () => {
 
+
     return (
         <div className="hall-details pi">
          <h2 className="info-container">Allotment Details</h2>

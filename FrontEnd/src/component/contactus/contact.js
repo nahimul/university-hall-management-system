@@ -9,7 +9,7 @@ function Contact() {
         <div className="contact-info">
           <div className="provost">
             <h4>Provost</h4>
-            <table>
+            <table className='contact-table'>
               <tbody>
                 <tr>
                   <td>Name</td>

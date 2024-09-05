@@ -1,6 +1,7 @@
 import React from 'react';
 import './navstyle.css';
 import { Link } from 'react-router-dom';
+import {toast} from 'react-toastify';
 
 
 const Navbaruser=()=>{
@@ -17,7 +18,7 @@ const Navbaruser=()=>{
                     <img className="logo-img" src={process.env.PUBLIC_URL + 'images.png'}/>
                     </button> 
                     <ul className="login-sub-menu sub-menu">
-                        <li><Link to="/">Logout</Link></li>
+                        <li><Link to="/" onClick={()=> toast('Logout Successfully!')}>Logout</Link></li>
                         <li><Link to="#">Profile</Link></li>
                         <li><Link to="#">Settings</Link></li>
                     </ul>   

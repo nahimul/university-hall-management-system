@@ -23,10 +23,13 @@ app.use(cors(
 
 //import studentsRouter from './routes/students.routes.js';
 const studentsRouter =require( './routes/students.routes.js');
+const noticeRouter= require('./routes/notices.routes.js');
 
 //declaration
 // app.use("/students", studentsRouter);
 app.use("/api/v1/students", studentsRouter);
+app.use("/api/v1/notices",noticeRouter);
+
 module.exports= {app};
 
 

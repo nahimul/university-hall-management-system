@@ -53,7 +53,5 @@ const avater= await uploadCloudinary(imagePath);
     );
 } )
 
-
-
 //export {registerStudents};
 module.exports= {registerStudents};

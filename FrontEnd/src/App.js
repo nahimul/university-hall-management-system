@@ -1,5 +1,4 @@
-import logo from './logo.svg';
-import {createBrowserRouter , RouterProvider ,Router, Route, Switch} from 'react-router-dom';
+import {createBrowserRouter , RouterProvider} from 'react-router-dom';
 import './App.css';
 import Events from "./component/events/Events";
 import Home from "./component/home/home";
