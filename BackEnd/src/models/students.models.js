@@ -1,7 +1,6 @@
-//import mongoose from 'mongoose';
-const mongoose =require('mongoose');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+import mongoose from 'mongoose';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
 const studentSchema = new mongoose.Schema(
   {
@@ -96,5 +95,4 @@ studentSchema.methods.generateRefreshToken = function () {
   );
 };
 
-const Student = mongoose.model('Student', studentSchema);
-module.exports=Student;
+export const Student = mongoose.model('Student', studentSchema);

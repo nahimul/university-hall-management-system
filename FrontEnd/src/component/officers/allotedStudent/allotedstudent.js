@@ -24,7 +24,7 @@ const AllotedStudent=()=>{
     return(
 
    <div className="students">
-     <table>
+     <table className='students-table'>
             <tbody>
               <tr>
                 <th>ROLL NO</th>

@@ -1,12 +1,11 @@
-require('dotenv').config({path: './.env'});
+import dotenv from 'dotenv';
+import connectDB from './db/index.js';
+import {app} from './app.js'
 
-//import dotenv from 'dotenv';
-//import connectDB from './db/index.js';
-const mongoose= require('mongoose');
-const {connectDB} = require('./db/index.js')
-const  {app} =require( './app.js');
+dotenv.config({
+    path: './.env'
+})
 
-console.log('hello naim');
 
 connectDB()
 .then(()=>{

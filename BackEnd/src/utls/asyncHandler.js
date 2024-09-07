@@ -4,5 +4,4 @@
     }
 }
 
-//export {asyncHandler};
-module.exports= {asyncHandler};
+export {asyncHandler};

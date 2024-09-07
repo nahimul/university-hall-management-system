@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link ,useNavigate} from 'react-router-dom';
 import { TextField, InputAdornment, IconButton } from '@mui/material';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
-import { useState, useEffect } from 'react';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import './registration.css';
 import axios from 'axios';
+import {toast} from 'react-toastify';
 
 const Register = () => {
   const intialValue = {
@@ -21,6 +21,7 @@ const Register = () => {
     password: '',
     showPassword: false,
   };
+  
   const navigate=useNavigate();
   const [formInput, setFormInput] = useState(intialValue);
   const [formErrors, setFormErrors] = useState({});
@@ -44,8 +45,12 @@ const Register = () => {
     setIsSubmitted(true);
     if(Object.keys(formErrors).length===0 && isSubmitted){
       axios.post('http://localhost:3001/registration',formInput)
-      .then(res=>console.log(res))
-      .catch(err=>console.log(err))
+    .then(res=>{console.log(res)
+      toast('Registration Successfull!')
+    })
+      .catch(err=>{console.log(err)
+        toast(`Error:${err}`);
+      })
       navigate('/login');
     }
   };

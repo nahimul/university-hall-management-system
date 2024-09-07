@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* .Toastify__toast--warning {
+  background: #FFE8BC;
+}
+.Toastify__toast--error {
+  background: #FCA7A9 ;
+} */
+.toastBody {
+  font-family: "Atlas Grotesk Web", Arial, Helvetica, sans-serif;
+  font-size: 1.75rem;
+}
+.toastProgress {
+  background: #333F48;
+}

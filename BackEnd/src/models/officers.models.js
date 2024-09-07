@@ -1,5 +1,4 @@
-//import mongoose from 'mongoose';
-const mongoose= require('mongoose');
+import mongoose from 'mongoose';
 const officersSchema = new mongoose.Schema(
   {
     name: { 
@@ -46,6 +45,4 @@ const officersSchema = new mongoose.Schema(
   { timeseries: true }
 );
 
-// export const Officers = mongoose.model('Officers', officersSchema);
-const Officers = mongoose.model('Officers', officersSchema);
-module.exports = Officers;
+export const Officers = mongoose.model('Officers', officersSchema);

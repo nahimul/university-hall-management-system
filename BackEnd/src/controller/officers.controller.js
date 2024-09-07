@@ -1,9 +1,9 @@
-const {asyncHandler}= require('../utls/asyncHandler')
-const  Officers = require('../models/officers.models.js') 
-const {APIError} = require('../utls/APIError.js')
-const {APIResponse} = require('../utls/APIResponse.js');
-const {uploadCloudinary} = require('../utls/cloudinary.js');
-const Officers = require('../models/officers.models.js');
+import {asyncHandler}from ('../utls/asyncHandler')
+import  Officers from ('../models/officers.models.js') 
+import {APIError} from ('../utls/APIError.js')
+import {APIResponse} from ('../utls/APIResponse.js');
+import {uploadCloudinary} from ('../utls/cloudinary.js');
+import Officers from ('../models/officers.models.js');
 
 const offiersRegistration= asyncHandler( async (req,res)=>{
     const {name,possition,id_no,mobile,email,password}=req.body;
@@ -29,4 +29,6 @@ const offiersRegistration= asyncHandler( async (req,res)=>{
         throw new APIError(500,"Somthing is Wrong!");
     }
     return res.status(201).json(new APIResponse(200,createOfficer,"Officer Registared Successfully!"));
-})
+});
+
+export {offiersRegistration};

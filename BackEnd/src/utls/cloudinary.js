@@ -1,7 +1,5 @@
-//import {v2 as cloudinary} from 'cloudinary';
-const cloudinary= require( 'cloudinary');
-// const v2 =require('cloudinary');
-const fs= require('fs');
+import {v2 as cloudinary} from 'cloudinary';
+import fs from 'fs';
 
 //copy&paste config from cludinary
 
@@ -11,7 +9,7 @@ cloudinary.config({
     api_secret:process.env.CLOUDINARY_API_SECRET
 });
 
-const uploadCoudinary= async (localFilePath)=>{
+const uploadCloudinary= async (localFilePath)=>{
     try{
         if(!localFilePath) return null;
         const result= await cloudinary.uploader.upload(localFilePath,{resource_type:'auto'});
@@ -25,7 +23,7 @@ const uploadCoudinary= async (localFilePath)=>{
     }
 }
 
-module.exports = {uploadCoudinary};
+export {uploadCloudinary};
 
 //Copy upload your first Asset
 

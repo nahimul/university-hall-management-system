@@ -1,10 +1,8 @@
-// import { asyncHandler } from "../utls/asyncHandler";
-
-const {asyncHandler}= require('../utls/asyncHandler')
-const Students = require('../models/students.models.js') 
-const {APIError} = require('../utls/APIError.js')
-const {APIResponse} = require('../utls/APIResponse.js');
-const {uploadCloudinary} = require('../utls/cloudinary.js');
+import { asyncHandler } from "../utls/asyncHandler.js";
+import {Student} from '../models/students.models.js'; 
+import {APIError} from '../utls/APIError.js';
+import {APIResponse} from '../utls/APIResponse.js';
+import {uploadCloudinary} from '../utls/cloudinary.js';
 
 const registerStudents =  asyncHandler( async (req,res)=>{
     const {name,email,department,roll,mobile,session,password}=req.body;
@@ -53,7 +51,4 @@ const avater= await uploadCloudinary(imagePath);
     );
 } )
 
-
-
-//export {registerStudents};
-module.exports= {registerStudents};
+export {registerStudents};
