@@ -1,5 +1,4 @@
-//import mongoose from 'mongoose';
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const  Schema = mongoose.Schema;
 
 const noticesSchema = new Schema({
@@ -19,6 +18,4 @@ const noticesSchema = new Schema({
     // },
 },{timestamps:true});
 
-//export const Notices = mongoose.model('Notices', noticesSchema);
-const Notices = mongoose.model('Notices',noticesSchema);
-module.exports = Notices;
+export const Notices = mongoose.model('Notices', noticesSchema);

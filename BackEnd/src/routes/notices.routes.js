@@ -1,8 +1,8 @@
-const{ Router }= require('express');
-const {addNotice} = require('../controller/notices.controller.js');
+import { Router }from 'express';
+import {addNotice} from '../controller/notices.controller.js';
 
 const router = Router();
 
 router.route('/addnotice').post(addNotice);
 
-module.exports = router;
+export default router;

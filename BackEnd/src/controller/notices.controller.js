@@ -1,7 +1,7 @@
-const {asyncHandler }= require('../utls/asyncHandler');
-const Notices = require('../models/notices.models');
-const { APIError } = require('../utls/APIError');
-const { APIResponse } = require('../utls/APIResponse');
+import {asyncHandler }from '../utls/asyncHandler.js';
+import { Notices } from '../models/notices.models.js';
+import { APIError } from '../utls/APIError.js';
+import { APIResponse } from '../utls/APIResponse.js';
 
 
 const addNotice = asyncHandler ( async (req,res)=>{
@@ -24,4 +24,4 @@ const addNotice = asyncHandler ( async (req,res)=>{
     );
 } )
 
-module.exports= {addNotice};
+export {addNotice};

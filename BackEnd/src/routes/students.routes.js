@@ -1,9 +1,7 @@
-//import {Router} from 'express';
-const {Router}= require( 'express');
-//import { registerStudents } from '../controller/students.controller';
-const {registerStudents} =require('../controller/students.controller');
+import {Router} from 'express';
+import { registerStudents } from '../controller/students.controller.js';
 const router= Router();
-const {upload} = require('../middlewares/multer.middlewares.js');
+import {upload} from '../middlewares/multer.middlewares.js';
 
 router.route('/registration').post(
             upload.fields([
@@ -16,5 +14,4 @@ router.route('/registration').post(
             
             ,registerStudents);
 //router.route('/login').post(login)
-//export default router;
-module.exports=router;
+export default router;
