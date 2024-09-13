@@ -48,7 +48,7 @@ const studentSchema = new mongoose.Schema(
       trim: true,
       required: [true, 'Password is required'],
     },
-    image: {
+    avatar: {
       type: String, //cloudinary url
       required: true,
     },
@@ -56,7 +56,7 @@ const studentSchema = new mongoose.Schema(
   { timeseries: true }
 );
 
-studentSchema.pre('save', async function () {
+studentSchema.pre('save', async function (next) {
   if (this.isModified('password')) {
     this.password = await bcrypt.hash(this.password, 10);
     next();
@@ -92,7 +92,7 @@ studentSchema.methods.generateRefreshToken = function () {
     {
       expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
     }
-  );
+    );
 };
 
-export const Student = mongoose.model('Student', studentSchema);
+export const Students = mongoose.model('Student', studentSchema);

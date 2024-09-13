@@ -10,10 +10,10 @@ const complainBoxSchema= new mongoose.Schema({
         type:String,
         required:true
     },
-    createdBy:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Student'
-    }
+    // createdBy:{
+    //     type:mongoose.Schema.Types.ObjectId,
+    //     ref:'Student'
+    // }
 },{timestamps:true});
 
 export const ComplainBox= mongoose.model('ComplainBox',complainBoxSchema);
