@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Backend for university hall management system",
   "main": "app.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js",
     "start": "nodemon src/index.js"

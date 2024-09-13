@@ -12,10 +12,14 @@ const noticesSchema = new Schema({
         trim:true,
         required:true,
     },
-    // uploadedFile: {
-    //     type:String,//url
-    //     required:true,
-    // },
+    date: {
+        type:Date,
+        default:Date.now,
+    },
+    upFile: {
+        type:String,//url
+        required:true,
+    },
 },{timestamps:true});
 
 export const Notices = mongoose.model('Notices', noticesSchema);

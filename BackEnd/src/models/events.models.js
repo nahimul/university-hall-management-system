@@ -14,7 +14,7 @@ const eventsSchema = new Schema({
         type:String,
         required:true,
     },
-    uploadedImages: {
+    images: {
         type:String,//url
         required:true,
     }
