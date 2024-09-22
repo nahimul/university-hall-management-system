@@ -1,8 +1,12 @@
 node_modules
-public
+
 .env
 .env.test
 .env.production
+.jpg
+.png
+.pdf
+.jpeg
 build
 dist
 coverage
