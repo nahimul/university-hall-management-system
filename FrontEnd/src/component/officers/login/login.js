@@ -1,16 +1,17 @@
 import React from 'react';
 import './loginstyle.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import { TextField, InputAdornment, IconButton } from '@mui/material';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignIn, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faSignIn} from '@fortawesome/free-solid-svg-icons';
+import {toast} from 'react-toastify';
+import Cookies from 'js-cookie';
 
 const Login = () => {
-  //   const history=UseHistory();
   const navigate = useNavigate();
   const intialValue = { email: '', password: '', showPassword: false };
   const [formInput, setFormInput] = useState(intialValue);
@@ -29,23 +30,29 @@ const Login = () => {
     setFormInput({ ...formInput, [name]: value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormErrors(validate(formInput));
     if (Object.keys(formErrors).length === 0 ) {
-       axios.post('http://localhost:3001/officerslogin', formInput)
-       .then(res => {console.log(res)
-        if(res.data==="Success")
+      try{
+      const res= await  axios.post('http://localhost:8080/api/v1/officers/login', formInput );
+      console.log(res.data.data);
+      Cookies.set('accessToken',res.data.data.accessToken);
+      Cookies.set('refreshToken',res.data.data.refreshToken);
+      if(res.data.success)
           {
-            navigate('/officers');
-            alert("Login Successfull");
+            toast("Login Successfull");
+            const rout= res.data.data.user.possition.toLowerCase();
+            console.log(rout);
+            navigate(`/${rout}`);
           }
-         else if(res.data.message){
-          alert(res.data.message)
-       }}).catch(err => console.log(err));
-    }
-  };
-
+         else{
+          toast(res.data.message)
+       }
+      }
+       catch(err){  console.log(err); };
+  }
+  }
   const validate = formInput => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;

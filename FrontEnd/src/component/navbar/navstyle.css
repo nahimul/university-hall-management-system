@@ -69,6 +69,7 @@
   
   .nav-right {
     display: flex;
+    align-items: center;
     width: Hug (602px) px;
     height: Hug (48px) px;
     padding: 5px;

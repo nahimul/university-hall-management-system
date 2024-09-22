@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import NoticeBoard from '../latestNotice/notice';
 import EventContainer from '../events/eventcontainer';
@@ -8,10 +8,21 @@ import './home.css';
 
 const Home = () => {
   const [page, setPage] = useState(true);
+<<<<<<< HEAD
+  const [residence, setResidence] = useState(false);
+=======
   const [residence, setResidence] = useState(true);
+>>>>>>> parent of a9d7b20 (Add Authenication and authorization of an user)
   // const handlePage=(e)=>{
   //     setPage(e.target.value)
   // };
+  useEffect(() => {
+    const token = Cookies.get('accessToken');
+    if (token) {
+      setResidence(true);
+    }
+  }, []);
+
   const optionOff = {
     color: '#878e99',
     textDecoration: 'none',
@@ -65,7 +76,12 @@ const Home = () => {
           </button>
         </div>
         <div className="allote-complain">
+<<<<<<< HEAD
+          {residence && allotment}
+          {residence && complain }
+=======
           {residence ? complain : allotment}
+>>>>>>> parent of a9d7b20 (Add Authenication and authorization of an user)
         </div>
       </div>
       <div className="home-container">

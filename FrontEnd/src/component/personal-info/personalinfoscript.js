@@ -6,6 +6,26 @@ import AllotmentInfo from '../allotment/allotmentinfo';
 import './personalinfostyle.css';
 
 const UserInfo = () => {
+<<<<<<< HEAD
+  const [user, setUser]= useState({});
+
+  useEffect( () => {    
+    axios.get('http://localhost:8080/api/v1/students/user'
+      ,{
+        withCredentials:true,
+      }
+    )
+  .then((res)=>{    
+      setUser(res.data.data);
+  } )
+  .catch((error)=>{
+      console.log(error);
+    }
+  )
+  },[]);
+
+=======
+>>>>>>> parent of a9d7b20 (Add Authenication and authorization of an user)
   return (
     <div>
       <div className="person-details pi">
