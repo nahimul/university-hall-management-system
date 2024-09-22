@@ -6,6 +6,7 @@ import {uploadCloudinary} from '../utls/cloudinary.js';
 
 const offiersRegistration= asyncHandler( async (req,res)=>{
     const {name,possition,id_no,mobile,registration,email,password}=req.body;
+    console.log(req.body);
     if( [name,possition,id_no,mobile,registration,email,password].some((field)=>{field?.trim()===""})) {
         throw new APIError(400,"All field is required!");
     }
@@ -40,6 +41,7 @@ const offiersRegistration= asyncHandler( async (req,res)=>{
     return res.status(201).json(new APIResponse(200,createOfficer,"Officer Registared Successfully!"));
 });
 
+
 //login officer
 const generateTokens = async (userID)=>{
     try{
@@ -56,6 +58,7 @@ const generateTokens = async (userID)=>{
   };
   
   const loginOfficers = asyncHandler(async (req, res) => {
+    console.log()
     const { email, password } = req.body;
     if (!email || !password) {
       throw new APIError(400, 'Email and Password is required!');
@@ -68,7 +71,7 @@ const generateTokens = async (userID)=>{
     if (!isMatch) {
       throw new APIError(400, 'Invalid Password!');
     }
-    const {token,refreshToken} = await generateTokens(officer._id);
+    const {accessToken,refreshToken} = await generateTokens(officer._id);
     const loggedInOfficers = await Officers.findById(officer._id).select("-password -refreshToken");
     console.log(loggedInOfficers);
     const options = {
@@ -78,10 +81,10 @@ const generateTokens = async (userID)=>{
    
     return res
     .status(200)
-    .cookie("accessToken",token,options)
+    .cookie("accessToken",accessToken,options)
     .cookie("refreshToken",refreshToken,options)
     .json(new APIResponse(200, 
-      { user: loggedInOfficers, token, refreshToken }, 
+      { user: loggedInOfficers, accessToken, refreshToken }, 
       'Login Success'));
   });
   
@@ -102,8 +105,8 @@ const generateTokens = async (userID)=>{
     
     return res
     .status(200)
-    .cookie("accessToken",options)
-    .cookie("refreshToken",options)
+    .clearCookie("accessToken",options)
+    .clearCookie("refreshToken",options)
     .json(new APIResponse(200, {}, 'Logout Success'));
   });
   

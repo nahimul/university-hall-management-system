@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
-import { IconButton, InputAdornment, Input, TextField } from '@mui/material';
+import { IconButton, InputAdornment,TextField } from '@mui/material';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import './forgotstyle.css';
 
@@ -35,6 +35,7 @@ const Register = () => {
   const handleSubmit = e => {
     e.preventDefault();
     setFormErrors(validate(formInput));
+    
   };
 
   const validate = formInput => {

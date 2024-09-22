@@ -9,7 +9,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignIn } from '@fortawesome/free-solid-svg-icons';
 import {toast} from 'react-toastify';
 const Login = () => {
+<<<<<<< HEAD
+=======
   //   const history=UseHistory();
+>>>>>>> parent of a9d7b20 (Add Authenication and authorization of an user)
   const navigate = useNavigate();
   const intialValue = { email: '', password: '', showPassword: false };
   const [formInput, setFormInput] = useState(intialValue);
@@ -28,6 +31,30 @@ const Login = () => {
     setFormInput({ ...formInput, [name]: value });
   };
 
+<<<<<<< HEAD
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormErrors(validate(formInput));
+    if (Object.keys(formErrors).length === 0 ) {
+     
+     try{
+      const res= await axios.post('http://localhost:8080/api/v1/students/login', formInput);
+     Cookies.set('accessToken', res.data.data.accessToken, { expires: 7, secure: true });
+     Cookies.set('refreshToken', res.data.data.refreshToken, { expires: 7, secure: true });
+      if(res.data.success)
+         {
+           toast("Login Successfull");
+           navigate('/user');
+         }
+        else {
+         toast(res.data.message)
+      }
+     }
+     catch(err){  
+      toast("Enetered email or password is incorrect!!");
+      console.log(err);      
+     };
+=======
   const handleSubmit = e => {
     e.preventDefault();
     setFormErrors(validate(formInput));
@@ -42,6 +69,7 @@ const Login = () => {
          else if(res.data.message){
           toast(res.data.message)
        }}).catch(err => console.log(err));
+>>>>>>> parent of a9d7b20 (Add Authenication and authorization of an user)
     }
   };
 

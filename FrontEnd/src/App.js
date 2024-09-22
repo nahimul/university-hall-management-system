@@ -1,4 +1,5 @@
 import {createBrowserRouter , RouterProvider} from 'react-router-dom';
+import {useState,useEffect} from 'react';
 import './App.css';
 import Events from "./component/events/Events";
 import Home from "./component/home/home";
@@ -17,11 +18,17 @@ import Register from "./component/officers/register/register"
 import Supervisor from './component/officers/supervisor/supervisor';
 
 function App() {
+ const [token,setToken]=useState();
+
+ useEffect(()=>{
+  const tok=Cookies.get('accessToken');
+  setToken(tok);
+ },[]);
 
   const router= createBrowserRouter([
     {
       path:"/",
-      element:<><Navbar/><Home/></>
+      element:<><Navbar/><Home/><Home/></>,
     },
     {
       path:"/home",
@@ -33,7 +40,7 @@ function App() {
     },
     {
       path:"/login",
-      element:<><Navbar/><Login/></>
+      element:<>{<Navbar/> && <Login/>}</>
     },
     {
       path:"/registration",
@@ -42,32 +49,32 @@ function App() {
     ,
     {
       path:"/user",
-      element:<><Navbaruser/><User/></>
+      element:<><Navbar/><User/></>
     },
     {
       path:"/forgot",
-      element:<><Navbaruser/><Forget/></>
+      element:<><Navbar/><Forget/></>
     },{
       path:"/allotmentform",
-      element:<><Navbaruser/><AllotmentForm/></>
+      element:<><Navbar/><AllotmentForm /></>
     },{
       path:"/complainbox",
-      element:<><Navbaruser/><ComplainBox/></>
+      element:<><Navbar/><ComplainBox/></>
     },{
       path:"/officerslogin",
-      element:<><Navbaruser/><OfficersLogin/></>
+      element:<><Navbar/><OfficersLogin/></>
     },{
       path:"/officersregistration",
-      element:<><Navbaruser/><OfficersRegistration/></>
+      element:<><Navbar/><OfficersRegistration/></>
     },{
       path:"/manager",
-      element:<><Navbaruser/><Manager/></>
+      element:<><Navbar/><Manager/></>
     },{
       path:"/register",
-      element:<><Navbaruser/><Register/></>
+      element:<><Navbar/><Register/></>
     },{
       path:"/supervisor",
-      element:<><Navbaruser/><Supervisor/></>
+      element:<><Navbar/><Supervisor/></>
     }
   ]
   );

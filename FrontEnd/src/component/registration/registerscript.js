@@ -55,10 +55,10 @@ const Register = () => {
     }
   };
 
-  const changeBorder = {
-    border: '1px solid red',
-    borderRadius: '5px',
-  };
+  // const changeBorder = {
+  //   border: '1px solid red',
+  //   borderRadius: '5px',
+  // };
 
   const validate = formInput => {
     const errors = {};
