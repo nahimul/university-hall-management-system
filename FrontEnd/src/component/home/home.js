@@ -5,17 +5,11 @@ import EventContainer from '../events/eventcontainer';
 import { Link } from 'react-router-dom';
 import Contact from '../contactus/contact';
 import './home.css';
+import Cookies from 'js-cookie'
 
 const Home = () => {
   const [page, setPage] = useState(true);
-<<<<<<< HEAD
   const [residence, setResidence] = useState(false);
-=======
-  const [residence, setResidence] = useState(true);
->>>>>>> parent of a9d7b20 (Add Authenication and authorization of an user)
-  // const handlePage=(e)=>{
-  //     setPage(e.target.value)
-  // };
   useEffect(() => {
     const token = Cookies.get('accessToken');
     if (token) {
@@ -76,12 +70,8 @@ const Home = () => {
           </button>
         </div>
         <div className="allote-complain">
-<<<<<<< HEAD
           {residence && allotment}
           {residence && complain }
-=======
-          {residence ? complain : allotment}
->>>>>>> parent of a9d7b20 (Add Authenication and authorization of an user)
         </div>
       </div>
       <div className="home-container">

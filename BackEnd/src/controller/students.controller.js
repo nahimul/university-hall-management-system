@@ -5,6 +5,7 @@ import { APIResponse } from '../utls/APIResponse.js';
 import { uploadCloudinary } from '../utls/cloudinary.js';
 //register student
 const registerStudents = asyncHandler(async (req, res) => {
+  
   const { name, email,registration, department, roll, mobile, session, password } = req.body;
   if (
     [name, email, department,registration, roll, mobile, session, password].some(field => {
@@ -16,13 +17,14 @@ const registerStudents = asyncHandler(async (req, res) => {
   const isExist = await Students.findOne({
     $or: [{ email }, { roll }, { mobile }],
   });
-
+  
   if (isExist) {
     throw new APIError(
       409,
       'User with roll, email or mobile already exist! Try new one..'
     );
   }
+  console.log('registration: ', req.body, 'Files: ',req.files);
   const imagePath = req.files?.avatar[0]?.path;
   if (!imagePath) {
     throw new APIError(400, 'Avatar is required and path!');
@@ -101,9 +103,18 @@ const loginStudent = asyncHandler(async (req, res) => {
     'Login Success'));
 });
 
+// get student profile
+const getProfile = asyncHandler(async (req, res) => {
+  console.log(req.user);
+  const student = await Students.findById(req.user._id).select('-password');
+  if (!student) {
+    throw new APIError(404, 'User not found!');
+  }
+  return res.status(200).json(new APIResponse(200, student, 'User Profile'));
+});
+
 //logout student
 const logoutStudent = asyncHandler(async (req, res) => {
-
   await Students.findByIdAndUpdate(
     req.user._id,
     { 
@@ -123,4 +134,4 @@ const logoutStudent = asyncHandler(async (req, res) => {
   .json(new APIResponse(200, {}, 'Logout Success'));
 });
 
-export { registerStudents, loginStudent, logoutStudent };
+export { registerStudents, loginStudent, logoutStudent,getProfile };

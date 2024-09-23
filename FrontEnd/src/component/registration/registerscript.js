@@ -17,7 +17,6 @@ const Register = () => {
     registration: '',
     mobile: '',
     email: '',
-    avatar:'',
     password: '',
     showPassword: false,
   };
@@ -25,7 +24,14 @@ const Register = () => {
   const navigate=useNavigate();
   const [formInput, setFormInput] = useState(intialValue);
   const [formErrors, setFormErrors] = useState({});
-  const [isSubmitted,setIsSubmitted]=useState(false)
+  const [isSubmitted,setIsSubmitted]=useState(false);
+  const [image,setImage]=useState(null);
+
+  const handleFileChange = e => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
+
 
   const handleChlickShowPassword = () => {
     setFormInput({ ...formInput, showPassword: !formInput.showPassword });
@@ -44,14 +50,28 @@ const Register = () => {
     setFormErrors(validate(formInput));
     setIsSubmitted(true);
     if(Object.keys(formErrors).length===0 && isSubmitted){
-      axios.post('http://localhost:3001/registration',formInput)
+      const formData = new FormData();
+      formData.append('name', formInput.name);
+      formData.append('department', formInput.department);
+      formData.append('session', formInput.session);
+      formData.append('roll', formInput.roll);
+      formData.append('registration', formInput.registration);
+      formData.append('mobile', formInput.mobile);
+      formData.append('email', formInput.email);
+      formData.append('password', formInput.password);
+      formData.append('avatar', image);
+
+      console.log(formData);
+      console.log(image);
+
+      axios.post('http://localhost:8080/api/v1/students/registration',formData)
     .then(res=>{console.log(res)
       toast('Registration Successfull!')
+      navigate('/login');
     })
       .catch(err=>{console.log(err)
         toast(`Error:${err}`);
       })
-      navigate('/login');
     }
   };
 
@@ -176,7 +196,10 @@ const Register = () => {
           <div className='image-upload'>
             <label for='image'>Upload your image: </label>
             <input type='file'
-                id='image'/>
+                id='image'
+                name='avatar'
+                onChange={handleFileChange}
+                />
           </div>
 
           <div className="pass">
