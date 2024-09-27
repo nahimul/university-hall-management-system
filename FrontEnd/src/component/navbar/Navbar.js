@@ -8,17 +8,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 
-const Navbar=()=>{
+const Navbar=(props)=>{
 
     const navigate=useNavigate();
     
     const [user, setUser]= useState({});
     const [token, setToken]=useState(Cookies.get('accessToken'));
-
+    
+    if(token){
     useEffect( () => {   
       
+      //const url = `http://localhost:8080/api/v1/${props.user}/profile`;
       
-      axios.get('http://localhost:8080/api/v1/students/user'
+      axios.get('http://localhost:8080/api/v1/students/profile'
         ,{
           withCredentials:true,
         }
@@ -32,6 +34,7 @@ const Navbar=()=>{
     )
 
     },[]);
+    }
  
     const handleLogout = () => {
         

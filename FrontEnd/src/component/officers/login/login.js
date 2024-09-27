@@ -13,11 +13,11 @@ import Cookies from 'js-cookie';
 
 const Login = () => {
   const navigate = useNavigate();
-  const intialValue = { email: '', password: '', showPassword: false };
-  const [formInput, setFormInput] = useState(intialValue);
+  const initialValue = { email: '', password: '', showPassword: false };
+  const [formInput, setFormInput] = useState(initialValue);
   const [formErrors, setFormErrors] = useState({});
 
-  const handleChlickShowPassword = () => {
+  const handleClickShowPassword = () => {
     setFormInput({ ...formInput, showPassword: !formInput.showPassword });
   };
 
@@ -111,7 +111,7 @@ const Login = () => {
                 endAdornment: (
                   <InputAdornment position="end">
                   <IconButton
-                    onClick={handleChlickShowPassword}
+                    onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
                   >
                     {formInput.showPassword ? (

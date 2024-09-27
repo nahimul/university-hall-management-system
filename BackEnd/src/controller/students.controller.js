@@ -86,7 +86,7 @@ const loginStudent = asyncHandler(async (req, res) => {
   if (!isMatch) {
     throw new APIError(400, 'Invalid Password!');
   }
-  const {token,refreshToken} = await generateTokens(student._id);
+  const {accessToken,refreshToken} = await generateTokens(student._id);
   const loggedInStudent = await Students.findById(student._id).select("-password -refreshToken");
   console.log(loggedInStudent);
   const options = {
@@ -96,10 +96,10 @@ const loginStudent = asyncHandler(async (req, res) => {
  
   return res
   .status(200)
-  .cookie("accessToken",token,options)
+  .cookie("accessToken",accessToken,options)
   .cookie("refreshToken",refreshToken,options)
   .json(new APIResponse(200, 
-    { user: loggedInStudent, token, refreshToken }, 
+    { user: loggedInStudent, accessToken, refreshToken }, 
     'Login Success'));
 });
 

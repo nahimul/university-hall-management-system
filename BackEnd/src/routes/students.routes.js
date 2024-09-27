@@ -6,13 +6,11 @@ import {verifyJWT} from '../middlewares/auth.middlewares.js';
 const router= Router();
 
 router.route('/registration').post(
-            upload.fields([
-                {
-                    name:'avatar',
-                    maxCount:1
-                }
-            ])
-            ,registerStudents);
+            upload.fields(
+                [
+                    {name:'avatar',maxCount:1},
+                ]   
+            ), registerStudents);
             
 router.route('/login').post(loginStudent);
 router.route('/logout').post(verifyJWT,logoutStudent);

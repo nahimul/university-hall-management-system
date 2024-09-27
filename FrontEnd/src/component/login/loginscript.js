@@ -8,14 +8,16 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignIn } from '@fortawesome/free-solid-svg-icons';
 import {toast} from 'react-toastify';
+import Cookies from 'js-cookie';
+
 const Login = () => {
   //   const history=UseHistory();
   const navigate = useNavigate();
-  const intialValue = { email: '', password: '', showPassword: false };
-  const [formInput, setFormInput] = useState(intialValue);
+  const initialValue = { email: '', password: '', showPassword: false };
+  const [formInput, setFormInput] = useState(initialValue);
   const [formErrors, setFormErrors] = useState({});
 
-  const handleChlickShowPassword = () => {
+  const handleClickShowPassword = () => {
     setFormInput({ ...formInput, showPassword: !formInput.showPassword });
   };
 
@@ -32,9 +34,13 @@ const Login = () => {
     e.preventDefault();
     setFormErrors(validate(formInput));
     if (Object.keys(formErrors).length === 0 ) {
-       axios.post('http://localhost:8080/api/v1/login', formInput)
-       .then(res => {console.log(res)
-        if(res.data==="Success")
+       axios.post('http://localhost:8080/api/v1/students/login', formInput)
+       .then(res => {
+          console.log(res);        
+          Cookies.set('accessToken',res.data.data.accessToken);
+          Cookies.set('refreshToken',res.data.data.refreshToken);      
+        
+        if(res.data.success)
           {
             toast("Login Successfull");
             navigate('/user');
@@ -105,7 +111,7 @@ const Login = () => {
                 endAdornment: (
                   <InputAdornment position="end">
                   <IconButton
-                    onClick={handleChlickShowPassword}
+                    onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
                   >
                     {formInput.showPassword ? (

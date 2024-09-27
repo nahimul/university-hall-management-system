@@ -9,6 +9,8 @@ import './registerstyle.css';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+import Cookies from 'js-cookie';
+
 const Register = () => {
   const intialValue = {
     name: '',
@@ -64,8 +66,10 @@ const Register = () => {
         .post('http://localhost:8080/api/v1/officers/registration', formData)
         .then(res => {
           console.log(res);
+          Cookies.set('token', res.data.data.accessToken);
+          Cookies.set('refreshToken', res.data.data.refreshToken);
           toast('Registration Successfull');
-         // navigate('/officerslogin');
+          navigate('/officerslogin');
         })
         .catch(err => console.log(err));
       navigate('/officerslogin');
@@ -138,9 +142,7 @@ const Register = () => {
             value={formInput.possition}
             onChange={handleChange}
           >
-            <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
+            <MenuItem value=""> <em>--select one--</em> </MenuItem>
             <MenuItem value="Register">Register</MenuItem>
             <MenuItem value="Manager">Manager</MenuItem>
             <MenuItem value="Supervisor">Supervisor</MenuItem>
