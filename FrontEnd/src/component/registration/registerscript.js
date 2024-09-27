@@ -9,7 +9,7 @@ import axios from 'axios';
 import {toast} from 'react-toastify';
 
 const Register = () => {
-  const intialValue = {
+  const initialValue = {
     name: '',
     department: '',
     session: '',
@@ -22,7 +22,7 @@ const Register = () => {
   };
   
   const navigate=useNavigate();
-  const [formInput, setFormInput] = useState(intialValue);
+  const [formInput, setFormInput] = useState(initialValue);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitted,setIsSubmitted]=useState(false);
   const [image,setImage]=useState(null);
@@ -60,9 +60,7 @@ const Register = () => {
       formData.append('email', formInput.email);
       formData.append('password', formInput.password);
       formData.append('avatar', image);
-
-      console.log(formData);
-      console.log(image);
+      console.log("image: ",image);
 
       axios.post('http://localhost:8080/api/v1/students/registration',formData)
     .then(res=>{console.log(res)
@@ -121,7 +119,8 @@ const Register = () => {
 
   return (
     <div className="register-page">
-      {/* <pre>{JSON.stringify(formInput, undefined, 2)}</pre> */}
+      {/* <pre>{JSON.stringify(formInput, undefined, 2)}</pre>
+      <pre>{JSON.stringify(image)}</pre> */}
       <div className="login-header ">
         <h1>Register your account</h1>
       </div>
@@ -198,7 +197,7 @@ const Register = () => {
             <input type='file'
                 id='image'
                 name='avatar'
-                onChange={handleFileChange}
+                multiple onChange={handleFileChange}
                 />
           </div>
 

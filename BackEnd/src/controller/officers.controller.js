@@ -90,7 +90,7 @@ const generateTokens = async (userID)=>{
   
   //logout officer
   const logoutOfficers = asyncHandler(async (req, res) => {
-  
+      
     await Officers.findByIdAndUpdate(
       req.user._id,
       { 

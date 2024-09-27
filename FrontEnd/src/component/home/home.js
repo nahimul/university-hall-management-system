@@ -9,7 +9,7 @@ import Cookies from 'js-cookie'
 
 const Home = () => {
   const [page, setPage] = useState(true);
-  const [residence, setResidence] = useState(true);
+  const [residence, setResidence] = useState(false);
   useEffect(() => {
     const token = Cookies.get('accessToken');
     if (token) {

@@ -39,6 +39,10 @@ const officersSchema = new mongoose.Schema(
       trim: true, 
       required: true 
     },
+    user:{
+      type:String,
+      default:'officer',
+    },
     avatar: {
       type: String, //cloudinary url
       required: true,

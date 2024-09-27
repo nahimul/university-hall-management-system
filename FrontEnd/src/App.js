@@ -15,58 +15,86 @@ import OfficersRegistration from "./component/officers/registration/register"
 import Manager from "./component/officers/manager/manager"
 import Register from "./component/officers/register/register"
 import Supervisor from './component/officers/supervisor/supervisor';
+import Cookies from 'js-cookie';
+import { useState , useEffect} from 'react';
 
 function App() {
+  const [token, setToken]=useState(Cookies.get('accessToken'));
+
+  useEffect( () => {
+    const token = Cookies.get('accessToken');
+    if (token) {
+      setToken(token);
+    }
+  }, []);
+
+  // const [user, setUser]= useState({});
+  // useEffect( () => {
+  //   const url = `http://localhost:8080/api/v1/${user}/profile`;
+  //   axios.get('http://localhost:8080/api/v1/students/profile'
+  //     ,{
+  //       withCredentials:true,
+  //     }
+  //   )
+  // .then((res)=>{
+  //     setUser(res.data.data.user);
+  // } )
+  // .catch((error)=>{
+  //     console.log(error);
+  //   } 
+  // )
+  // },[]);
+
   const router= createBrowserRouter([
     {
       path:"/",
-      element:<><Navbar/><Home/><Home/></>,
+      element:<><Navbar user=''/><Home/><Home/></>,
     },
     {
       path:"/home",
-      element:<><Navbar/><Home/></>
+      element:<><Navbar user=''/><Home/></>
     },
     {
       path:"/event",
-      element:<><Navbar/><Events/></>
+      element:<><Navbar user=''/><Events/></>
     },
     {
       path:"/login",
-      element:<><Navbar/><Login/></>
+      element:<><Navbar user=''/><Login/></>
     },
     {
       path:"/registration",
-      element:<><Navbar/><Registration/></>
+      element:<><Navbar user='student'/><Registration/></>
     }
     ,
     {
       path:"/user",
-      element:<><Navbar/><User/></>
+      element:<><Navbar user='student'/><User/></>
     },
     {
       path:"/forgot",
-      element:<><Navbar/><Forget/></>
+      element:<><Navbar user='student'/><Forget/></>
     },{
       path:"/allotmentform",
-      element:<><Navbar/><AllotmentForm /></>
+      element:<><Navbar user='student'/><AllotmentForm /></>
     },{
       path:"/complainbox",
-      element:<><Navbar/><ComplainBox/></>
+      element:<><Navbar user='student'/><ComplainBox/></>
     },{
       path:"/officerslogin",
       element:<><Navbar/><OfficersLogin/></>
     },{
       path:"/officersregistration",
-      element:<><Navbar/><OfficersRegistration/></>
+      element:<><Navbar user='officer'/><OfficersRegistration/></>
     },{
       path:"/manager",
-      element:<><Navbar/><Manager/></>
+      element:<><Navbar user='officer'/><Manager/></>
     },{
       path:"/register",
-      element:<><Navbar/><Register/></>
+      element:<><Navbar user='officer'/><Register/></>
     },{
       path:"/supervisor",
-      element:<><Navbar/><Supervisor/></>
+      element:<><Navbar user='officer'/><Supervisor/></>
     }
   ]
   );

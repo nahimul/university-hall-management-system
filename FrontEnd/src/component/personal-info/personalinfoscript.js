@@ -11,7 +11,7 @@ const UserInfo = () => {
   const [user, setUser]= useState({});
 
   useEffect( () => {    
-    axios.get('http://localhost:8080/api/v1/students/user'
+    axios.get('http://localhost:8080/api/v1/students/profile'
       ,{
         withCredentials:true,
       }
@@ -24,7 +24,6 @@ const UserInfo = () => {
     }
   )
   },[]);
-
   return (
     <div>
       <div className="person-details pi">
@@ -41,7 +40,7 @@ const UserInfo = () => {
         <h2 className="info-container">Student Dashboard</h2>
         <div className="details">
           <div className="person-image">
-            <img alt="Event" src={process.env.PUBLIC_URL + '/images.png'} />
+            <img alt="Event" src={user.avatar} />
           </div>
           <div className="person-info">
             <div className="name">
