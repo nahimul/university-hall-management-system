@@ -9,7 +9,7 @@ import Cookies from 'js-cookie'
 
 const Home = () => {
   const [page, setPage] = useState(true);
-  const [residence, setResidence] = useState(false);
+  const [residence, setResidence] = useState(true);
   useEffect(() => {
     const token = Cookies.get('accessToken');
     if (token) {
@@ -69,13 +69,13 @@ const Home = () => {
             Latest Notice
           </button>
         </div>
-        <div className="allote-complain">
+        <div className="allotment-complain">
           {residence && allotment}
           {residence && complain }
         </div>
       </div>
       <div className="home-container">
-        {/* ternary oparatior */}
+        {/* ternary operator */}
         {page ? <EventContainer /> : <NoticeBoard />}
         <Contact />
       </div>

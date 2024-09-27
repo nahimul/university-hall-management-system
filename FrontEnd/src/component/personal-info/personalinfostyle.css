@@ -51,6 +51,13 @@ gap: 20px;
   text-align: left;
 }
 
+.person-details .details-table #resident{
+    background-color: #4CAF50;
+}
+.person-details .details-table #non-resident{
+    background-color: #f44336;
+}
+
 .person-details .details {
   display: flex;
   justify-content: start;

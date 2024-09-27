@@ -1,11 +1,14 @@
 import React from 'react';
 
 import './allotment.css';
-import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
+import Fees from './info';
+// import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 
 const AllotmentInfo = () => {
 
+  const [fees, setFees] = React.useState(Fees);
 
+  
     return (
         <div className="hall-details pi">
          <h2 className="info-container">Allotment Details</h2>
@@ -43,16 +46,11 @@ const AllotmentInfo = () => {
       
       <div className="fees-info">
         <div className="select-year">
-          <h2>Hall Fees</h2>
-          <FilterAltOutlinedIcon className="filter" />
-          <select>
-            <option>2022</option>
-            <option>2022</option>
-          </select>  
+          <h2>Hall Fees</h2> 
         </div>
         <div className="fees-data-table">
-        <table>
-            <tbody>
+        <table className='fees-table'>
+            <thead>
               <tr>
                 <th>FEE NAME</th>
                 <th>FEE DUEATION</th>
@@ -60,20 +58,19 @@ const AllotmentInfo = () => {
                 <th>DUE DATE</th>
                 <th>STATUS</th>
               </tr>
-              <tr>
-                <td>Monthly Fee</td>
-                <td>5 month</td>
-                <td>500 BDT</td>
-                <td>10 July, 2024</td>
-                <td><boutton id='paid'>Paid</boutton> </td>
-              </tr>
-              <tr>
-                <td>Internet Fee</td>
-                <td>1 year</td>
-                <td>350 BDT</td>
-                <td>10 July, 2024</td>
-                <td><boutton type="submit" id="due">Due</boutton> </td>
-              </tr>
+            </thead>
+            <tbody>
+            {fees.map((fee) => {
+                return (
+                  <tr key={fee.feeType}>
+                    <td>{fee.feeType}</td>
+                    <td>{fee.feeDuration}</td>
+                    <td>{fee.amount}</td>
+                    <td>{fee.dueDate}</td>
+                    <td><button id={`${fee.status.toLowerCase()}-btn`}>{fee.status}</button> </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

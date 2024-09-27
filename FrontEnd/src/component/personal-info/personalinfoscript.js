@@ -60,7 +60,7 @@ const UserInfo = () => {
                    </tr>
                    <tr> 
                     <td>Student Type</td>
-                    <td>: {user.resident}</td>
+                    <td id={user.resident?user.resident.toLowerCase():''}>: {user.resident}</td>
                   </tr>
                   <tr>
                     <td>Department</td>

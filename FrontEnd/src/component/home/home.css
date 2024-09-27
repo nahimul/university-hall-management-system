@@ -1,8 +1,11 @@
-.allote-complain button{
+.allotment-complain button{
 background:#002F9D;
 height: 40px;
+color: white;
 font-family: Montserrat;
 padding: 12px 36px 12px 36px;
+margin-left:10px;
+border: none;
 border-radius: 12px;
 font-weight: 600;
 font-size: 16px;
@@ -17,6 +20,7 @@ font-size: 16px;
     background-color: inherit;
     border-style: none;
     font-family: Montserrat;
+    margin-right:10px;
     font-size: 20px;
     font-weight: 100px;
     text-align: left;

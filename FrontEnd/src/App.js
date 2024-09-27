@@ -32,7 +32,7 @@ function App() {
     },
     {
       path:"/login",
-      element:<>{<Navbar/> && <Login/>}</>
+      element:<><Navbar/><Login/></>
     },
     {
       path:"/registration",
