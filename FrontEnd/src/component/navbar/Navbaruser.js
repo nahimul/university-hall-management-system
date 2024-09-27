@@ -2,7 +2,6 @@ import React from 'react';
 import './navstyle.css';
 import { Link } from 'react-router-dom';
 import {toast} from 'react-toastify';
-<<<<<<< HEAD
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -54,11 +53,9 @@ const Navbaruser=()=>{
 
 
 
-=======
 
 
 const Navbaruser=()=>{
->>>>>>> parent of a9d7b20 (Add Authenication and authorization of an user)
     return (
         <div className="nav-bar">
             <div className="nav-left">
@@ -117,6 +114,7 @@ const Navbaruser=()=>{
             }
         </div>
     );
+}
 }
 
 export default Navbaruser;

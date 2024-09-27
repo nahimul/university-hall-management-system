@@ -3,7 +3,7 @@ import './supervisor.css';
 
 import {useState} from 'react';
 const Supervisor = () => {
- const [reply,setReply]=useState(false);
+const [reply,setReply]=useState(false);
 
   const complains = (
     <div className="complains">

@@ -1,8 +1,0 @@
-node_modules
-public
-.env
-.env.test
-.env.production
-build
-dist
-coverage

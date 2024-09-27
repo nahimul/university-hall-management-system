@@ -1,10 +1,9 @@
 import {createBrowserRouter , RouterProvider} from 'react-router-dom';
-import {useState,useEffect} from 'react';
 import './App.css';
 import Events from "./component/events/Events";
 import Home from "./component/home/home";
 import Navbar from "./component/navbar/Navbar";
-import Navbaruser from './component/navbar/Navbaruser'; 
+// import Navbaruser from './component/navbar/Navbaruser'; 
 import Login from "./component/login/loginscript";
 import Registration from "./component/registration/registerscript";
 import User from "./component/personal-info/personalinfoscript";
@@ -18,13 +17,6 @@ import Register from "./component/officers/register/register"
 import Supervisor from './component/officers/supervisor/supervisor';
 
 function App() {
- const [token,setToken]=useState();
-
- useEffect(()=>{
-  const tok=Cookies.get('accessToken');
-  setToken(tok);
- },[]);
-
   const router= createBrowserRouter([
     {
       path:"/",
@@ -40,7 +32,7 @@ function App() {
     },
     {
       path:"/login",
-      element:<>{<Navbar/> && <Login/>}</>
+      element:<><Navbar/><Login/></>
     },
     {
       path:"/registration",

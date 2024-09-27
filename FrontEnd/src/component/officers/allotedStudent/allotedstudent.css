@@ -1,10 +1,54 @@
-.students-table {
+.students-table{
     width: 100%;
     border-collapse: collapse;
     font-size: 16px;
     font-family: Montserrat;
     color: #081c3b;
     text-align: left;
+  }
+  .students-table img{
+    width: 15px;
+    border:none;
+  }
+  .students-table #action{
+    text-align:center;
+
+  }
+  .records .students input, .records .students select{
+    padding: 10px;
+    border: 1px solid #CED2D8;
+    border-radius: 5px;
+    margin: 10px 0 10px 5px;
+  }
+  .students-table .action-btn{
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+  }
+  .pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  .pagination li{
+    list-style: none;
+    margin: 0 5px;
+  }
+  .pagination a{
+    text-decoration: none;
+    color: #081c3b;
+    padding: 5px 10px;
+    display: block;
+    margin: 0 5px;
+  }
+
+  .pagination .active{
+    background: #081c3b;
+    color: #fff;
+    border:1px solid #fff;
   }
   .students-table th , .students-table td{
     padding: 15px 0px;
@@ -14,7 +58,7 @@
   }
 
   .students{
-    width:100%;
+    width: 100%;
     border: 1px solid #CED2D8;
     padding:10px 15px;
     border-radius: 5px;

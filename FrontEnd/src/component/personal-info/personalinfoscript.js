@@ -1,12 +1,13 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import AllotmentInfo from '../allotment/allotmentinfo';
 import './personalinfostyle.css';
+import axios from 'axios';
+
 
 const UserInfo = () => {
-<<<<<<< HEAD
   const [user, setUser]= useState({});
 
   useEffect( () => {    
@@ -24,8 +25,6 @@ const UserInfo = () => {
   )
   },[]);
 
-=======
->>>>>>> parent of a9d7b20 (Add Authenication and authorization of an user)
   return (
     <div>
       <div className="person-details pi">
@@ -46,26 +45,26 @@ const UserInfo = () => {
           </div>
           <div className="person-info">
             <div className="name">
-              <h1 className="name">Md. Nahimul Islam</h1>
+              <h1 className="name">{user.name}</h1>
             </div>
             <div >
               <table className="details-table">
                 <tbody>
                   <tr>
                     <td>Student ID</td>
-                    <td>: 1911077121</td>
+                    <td>: {user.roll}</td>
                   </tr>
                   <tr>
                     <td>Registration No</td>
-                    <td>: 1911077121</td>
+                    <td>: {user.registration}</td>
                    </tr>
                    <tr> 
                     <td>Student Type</td>
-                    <td>: Resident</td>
+                    <td id={user.resident?user.resident.toLowerCase():''}>: {user.resident}</td>
                   </tr>
                   <tr>
                     <td>Department</td>
-                    <td>: Information &Communication Engineering</td>
+                    <td>: {user.department}</td>
                   </tr>
                   <tr>
                     <td>Program</td>
@@ -73,11 +72,11 @@ const UserInfo = () => {
                   </tr>
                   <tr>
                     <td>Session</td>
-                    <td>: 2018-19</td>
+                    <td>: {user.session}</td>
                   </tr>
                   <tr>
                     <td>Phone</td>
-                    <td>: 0177*****02</td>
+                    <td>: {user.mobile}</td>
                   </tr>
                 </tbody>
               </table>

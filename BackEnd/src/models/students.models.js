@@ -35,6 +35,14 @@ const studentSchema = new mongoose.Schema(
       trim: true,
       required: true,
     },
+    // resident: {
+    //   type:String,
+    //   default:'Not Residence'
+    // },
+    // refreshToken: {
+    //   type:String,
+    //   trim:true,
+    // },
     email: {
       type: String,
       trim: true,

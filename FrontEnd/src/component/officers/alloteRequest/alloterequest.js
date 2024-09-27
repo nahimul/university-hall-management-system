@@ -1,154 +1,133 @@
-import React,{useState} from 'react';
-import DataTable from 'react-data-table-component';
-import '../allotedStudent/allotedstudent.js';
+import React,{useState,useEffect} from 'react';
+import student from '../allotedStudent/student';
+import '../allotedStudent/allotedstudent.css';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-const AlloteRequest=()=>{
+const AllotedStudent = () => {
+    const [data, setData] = useState(student);
+    const [currentPage, setCurrentPage] = useState(1);
+    const recordsPerPage = 10;
+    const lastIdx = currentPage * recordsPerPage;
+    const firstIdx = lastIdx - recordsPerPage;
+    const records = data.slice(firstIdx, lastIdx);
+    const nPages = Math.ceil(data.length / recordsPerPage);
+    const pageNumbers = [...Array(nPages).keys()].map((i) => i + 1);//.slice(1);
 
-    const student={
-        roll:'1911077121',
-        name:'Nahimul Islam',
-        room:'140 C',
-        mobile:'01774366602',
-        allotedForm:'January 2020',
-        allotedExpire:'January 2025',
+
+    const nextPage = () => {  
+      if (currentPage < nPages) {
+        setCurrentPage(currentPage + 1);
+      }
+    }
+
+    const prevPage = () => {
+      if (currentPage > 1) {
+        setCurrentPage(currentPage - 1);
+      }
+    }
+
+    const [search, setSearch] = useState('');
+    const [searchBy, setSearchBy] = useState('name');
+
+    const handleSearchBy = (e) => {
+      setSearchBy(e.target.value);
     };
 
-    const column =[ 
-    {
-      name:"ROLL NO",
-      selector: row=>row.roll,
-      maxWidth:'10px',
-      sortable:true
-    },
-    {
-      name:"NAME",
-      selector: row=>row.name,
-      maxWidth:'200px',
-      sortable:true
-    },
-    {
-      name:"ROOM NO",
-      selector: row=>row.room,
-      sortable:true
-    },
-    {
-      name:"MOBILE NO",
-      selector: row=>row.mobile,
-    },
-    {
-      name:"FEE INFO",
-      selector: row=>row.fees,
-    },
-    {
-      name:"EXPIRE",
-      selector: row=>row.allotedExpire,
-      sortable:true
-    },
-    {
-      name:"ACTION",
-      selector: row=>row.action,
-      Cell:(props)=>(
-        <button> action</button>
-      )
-    },
-    ];
-    const data=[
-      {
-        id:1,
-        roll:student.roll,
-        name:student.name,
-        room:student.room,
-        mobile:student.mobile,
-        fees:student.fees,
-        allotedExpire:student.allotedExpire,
-        action: 'action',
-      },
-      {
-        id:2,
-        roll:student.roll,
-        name:student.name,
-        room:student.room,
-        mobile:student.mobile,
-        fees:student.fees,
-        allotedExpire:student.allotedExpire,
-        action: 'action',
-      },
-      {
-        id:3,
-        roll:student.roll,
-        name:student.name,
-        room:student.room,
-        mobile:student.mobile,
-        fees:student.fees,
-        allotedExpire:student.allotedExpire,
-        action: 'action',
-      },
-      {
-        id:4,
-        roll:student.roll,
-        name:student.name,
-        room:student.room,
-        mobile:student.mobile,
-        fees:student.fees,
-        allotedExpire:student.allotedExpire,
-        action: 'action',
-      },
-      {
-        id:5,
-        roll:student.roll,
-        name:student.name,
-        room:student.room,
-        mobile:student.mobile,
-        fees:student.fees,
-        allotedExpire:student.allotedExpire,
-        action: 'action',
-      },
-      {
-        id:6,
-        roll:student.roll,
-        name:student.name,
-        room:student.room,
-        mobile:student.mobile,
-        fees:student.fees,
-        allotedExpire:student.allotedExpire,
-        action:'action',
-      },
-      {
-        id:7,
-        roll:19454545,
-        name:'Sakil',
-        room:'240 D',
-        mobile:student.mobile,
-        fees:student.fees,
-        allotedExpire:student.allotedExpire,
-        action: 'action',
+    const handleSearch = (e) => {
+      setSearch(e.target.value);
+    };
+
+    const getFilterData = (e) => {
+      e.preventDefault();
+      console.log(searchBy, search);
+      if (searchBy === 'name') {
+        setData(student.filter((student) => student.name.toLowerCase().includes(search.toLowerCase())));
+      } else if (searchBy === 'department') {
+        setData(student.filter((student) => student.department.toLowerCase().includes(search.toLowerCase())));
+      } else if (searchBy === 'roll') {
+        setData(student.filter((student) => student.roll.toLowerCase().includes(search.toLowerCase())));
+      } else if (searchBy === 'room') {
+        setData(student.filter((student) => student.room.toLowerCase().includes(search.toLowerCase())));
+      } else if (searchBy === 'mobile') {
+        setData(student.filter((student) => student.mobile.toLowerCase().includes(search.toLowerCase
+        ())));
       }
-    ];
-
-    const [records,setRecords]=useState(data);
-
-    const handleChange =(e) =>{
-      const newData=data.filter(row=> {return row.name.toLowerCase().includes(e.target.value.toLowerCase())});
-      setRecords(newData);
     }
-    
-    return(
 
-   <div>
-     <div className='filter'>
-      <input type='text' onChange={handleChange}/>
-     </div>
-     <div className="students">
-     <DataTable
-     columns={column}
-     data={records}
-     fixedHeader
-     pagination
-     bodyClassName="students-table"
-     ></DataTable>
-     </div>
-   </div>
-    );
-};
+    useEffect(() => {
+      setData(student);
+    }, []);
 
-export default AlloteRequest;
+    return (
+      <div className='records'>
+        <div className='students'>
+            <label htmlFor='search-by'>Search by : </label>
+            <select className='search-by' onChange={handleSearchBy}>
+                <option value="" selected disabled hidden>--select one--</option>
+                <option value='name'>Name</option>
+                <option value='department'>Department</option>
+                <option value='roll'>Roll</option>
+                <option value='room'>Room</option>
+                <option value='mobile'>Mobile</option>
+              </select>
+            <label htmlFor='search'> Value : </label>
+            <input type='text' className='search' onChange={handleSearch}/>
+            
+            <input type='submit' value='Search' className='search-btn' onClick={getFilterData}/>
+            <input type='submit' value='Reset' className='reset-btn' onClick={() => setData(student)}/>
+
+
+            <table className='students-table'>
+                  <thead>
+                    <th>STUDENT NAME</th>
+                    <th>DEPARTMENT</th>
+                    <th>STUDENT ID</th>
+                    <th>ROOM NO</th>
+                    <th>MOBILE</th>
+                    <th>DESIRED ALLOT</th>
+                    <th style={{width:'60px'}}>ACTION</th>
+                  </thead>
+                  <tbody>
+                    {records.map((student) => (
+                                          
+                      <tr>
+                        <td style={{width:'20%'}}>{student.name}</td>
+                        <td style={{width:'20%'}}>{student.department}</td>
+                        <td style={{width:'20%'}}>{student.roll}</td>
+                        <td style={{width:'15%'}}>{student.room}</td>
+                        <td style={{width:'20%'}}>{student.mobile}</td>
+                        <td style={{width:'20%'}}>{student.date}</td>
+                        <td id='action'><button className='action-btn'><img id='setting' src={process.env.PUBLIC_URL + '/setting.png'} /></button></td>
+                      </tr>
+                    ))
+                    }
+                    <tr></tr>
+                  </tbody>
+            </table>  
+
+        </div>
+        <div className='pagination'>
+                    <li className='page-item'>
+                        <a onClick={prevPage} href='#' className='page-link'>
+                           {'< '}Previous
+                        </a>
+                    </li>
+                    {pageNumbers.map((i) => (
+                        <li key={i} className='page-item'>
+                            <a onClick={() => setCurrentPage(i)} href='#' className={currentPage===i? 'active':''}>
+                                {i}
+                            </a>
+                        </li>
+                    ))}
+                    <li className='page-item'>
+                        <a onClick={nextPage} href='#' className='page-link'>
+                            Next{' >'}
+                        </a>
+                    </li>
+        </div>
+      </div>
+    )
+}
+
+export default AllotedStudent;
