@@ -8,7 +8,7 @@ const officersSchema = new mongoose.Schema(
       trim: true, 
       required: true 
     },
-    possition: { 
+    position: { 
       type: String, 
       trim: true, 
       required: true 

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { offiersRegistration, loginOfficers,logoutOfficers } from "../controller/officers.controller.js";
+import { officerRegistration, loginOfficers,logoutOfficers } from "../controller/officers.controller.js";
 import {upload} from '../middlewares/multer.middlewares.js';
 import { verifyJWT } from '../middlewares/auth.middlewares.js';
 
@@ -13,7 +13,7 @@ router.route('/registration').post(
     ])
     
     
-    ,offiersRegistration);
+    ,officerRegistration);
 router.route('/login').post(loginOfficers);
 router.route('/logout').post(verifyJWT,logoutOfficers);
 

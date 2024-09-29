@@ -6,7 +6,7 @@ import { uploadCloudinary } from '../utls/cloudinary.js';
 
 
 const addNotice = asyncHandler ( async (req,res)=>{
-    const {title,description}=req.body;
+    const {title,description,date,time}=req.body;
     console.log(req.body);
     if([title,description].some((field)=> { field?.trim()==='' } )){
         throw new APIError(400,"All fields are required!");
@@ -21,6 +21,8 @@ const addNotice = asyncHandler ( async (req,res)=>{
     }
     const notice= await Notices.create({
         title,
+        date,
+        time,
         description,
         upFile:upFile?.url || '',
     });
@@ -34,6 +36,7 @@ const addNotice = asyncHandler ( async (req,res)=>{
     );
 } );
 
+//get all notices
 const getNotice = asyncHandler(async (req,res)=>{
     const notices = await Notices.find().select("-description");
     if(!notices){
@@ -44,4 +47,16 @@ const getNotice = asyncHandler(async (req,res)=>{
     );
 }   );
 
-export {addNotice , getNotice};
+//delete notice by id
+const deleteNotice = asyncHandler(async (req,res)=>{
+    const {id} = req.params;
+    const notice = await Notices.findByIdAndDelete(id);
+    if(!notice){
+        throw new APIError(404,"No notice found!");
+    }
+    return res.status(200).json(
+        new APIResponse(200,notice,"Notice deleted successfully!")
+    );
+}   );
+
+export {addNotice , getNotice,deleteNotice};

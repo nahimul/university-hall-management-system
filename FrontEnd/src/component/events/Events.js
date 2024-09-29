@@ -4,8 +4,23 @@ import EventContainer from './eventcontainer';
 import './eventstyle.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 const Events = () => {
+
+  const [events, setEvents] = useState([]);
+  useEffect(() => {
+    axios.get('http://localhost:8080/api/v1/events/get')
+      .then((res) => {
+        console.log(res.data.data);
+        setEvents(res.data.data);
+        console.log(events);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }, []);
 
   return (
     <div className="details-container">

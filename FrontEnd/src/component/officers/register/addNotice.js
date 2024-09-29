@@ -8,12 +8,48 @@ const AddNotice = () => {
         time:'',
         date:'',
         description:'',
-        uploaded:''
     };
 
     const [notice,setNotice]=useState(initialValue);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit,setIsSubmit]= useState(false);
+    const [docs,setDocs]=useState(null);
+    const [Time,setTime]=useState(null);
+    const [formateDate,setFormateDate]=useState(null);
+
+    const handleFileChange = e => {
+        const file = e.target.files[0];
+        setDocs(file);
+    };
+
+    const handleTimeChange = e => {
+      const { name, value } = e.target;
+    const [hours, minutes] = value.split(':');
+    const date = new Date();
+    date.setHours(hours);
+    date.setMinutes(minutes);
+    const formattedTime = date.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    });
+    console.log(formattedTime);
+    setTime(formattedTime);
+    setNotice({ ...notice, [name]: value });
+    };
+
+    const handleDateChange = e => {
+        const {name,value}=e.target;
+    const selectedDate = new Date(value);
+    const formattedDate = selectedDate.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric',
+    });
+    console.log(formattedDate); 
+    setFormateDate(formattedDate);
+    setNotice({...notice,[name]: value});
+    };
 
     const handleChange= e=>{
         const {name,value}=e.target;
@@ -24,9 +60,23 @@ const AddNotice = () => {
         e.preventDefault();
         setFormErrors(validate(notice));
         setIsSubmit(true);
-        if(Object.keys(formErrors).legnth===0 && isSubmit){
-            axios.post('http://localhost:3001/register',notice)
-            .then(res=>console.log(res))
+        if(Object.keys(formErrors).length===0 && isSubmit){
+          const formData = new FormData();
+          formData.append('title', notice.title);
+          formData.append('time', Time);
+          formData.append('date', formateDate);
+          formData.append('description', notice.description);
+          formData.append('upFile', docs);
+
+          console.log("image: ",docs);
+          
+          axios.post('http://localhost:8080/api/v1/notices/add',formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },}
+          )
+            .then(res=>console.log(res)
+          )
             .catch(err=>console.log(err));
         }
     };
@@ -39,7 +89,7 @@ const AddNotice = () => {
         if(!notice.time || !notice.date){
             errors.date='* Time & date is required!';
         }
-        if(!notice.uploaded){
+        if(!docs){
             errors.uploaded='* File is required!';
         }
         return errors;
@@ -68,12 +118,12 @@ const AddNotice = () => {
               type="time"
               name='time'
               value={notice.time}
-              onChange={handleChange} />
+              onChange={handleTimeChange} />
               <input id="date" 
               type="date"
               name='date'
               value={notice.date}
-              onChange={handleChange} />
+              onChange={handleDateChange} />
             </div>
             {formErrors.date && <p id='errors'>{formErrors.date}</p>}
           </div>
@@ -87,9 +137,9 @@ const AddNotice = () => {
           <div className="upload">
             <label for="upload-file">Upload file: </label>
             <input id="upload-file" type="file" 
-             name='uploaded'
-             value={notice.uploaded}
-             onChange={handleChange}/>
+             name='upFile'
+             multiple
+             onChange={handleFileChange}/>
           </div>
           {formErrors.uploaded && <p id='errors'>{formErrors.uploaded}</p>}
           <div className="action-addevent">
@@ -98,9 +148,6 @@ const AddNotice = () => {
             </button>
             <button className="cancel" type="cancel">
               Cancel
-            </button>
-            <button className="delete" type="delete">
-              Delete
             </button>
           </div>
         </form>

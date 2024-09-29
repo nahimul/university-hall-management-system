@@ -6,7 +6,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-
+import { jwtDecode } from 'jwt-decode'
 
 const Navbar=(props)=>{
 
@@ -14,6 +14,13 @@ const Navbar=(props)=>{
     
     const [user, setUser]= useState({});
     const [token, setToken]=useState(Cookies.get('accessToken'));
+    console.log(token);
+    if(token){  
+    const decoded = jwtDecode(token);
+    console.log(decoded);
+    }
+
+
     
     if(token){
     useEffect( () => {   

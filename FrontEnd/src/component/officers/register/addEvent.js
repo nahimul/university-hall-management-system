@@ -8,12 +8,18 @@ const AddEvent = () => {
         title:'',
         date:'',
         description:'',
-        uploaded:''
     };
 
     const [event,setNotice]=useState(initialValue);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit,setIsSubmit]= useState(false);
+    const [image,setImage]=useState(null);
+
+    const handleFileChange = e => {
+        const file = e.target.files[0];
+        setImage(file);
+    };
+
 
     const handleChange= e=>{
         const {name,value}=e.target;
@@ -24,9 +30,16 @@ const AddEvent = () => {
         e.preventDefault();
         setFormErrors(validate(event));
         setIsSubmit(true);
-        if(Object.keys(formErrors).legnth===0 && isSubmit){
-            axios.post('http://localhost:3001/register',event)
-            .then(res=>console.log(res))
+        if(Object.keys(formErrors).length===0 && isSubmit){
+          const formData = new FormData();
+          formData.append('title', event.title);
+          formData.append('date', event.date);
+          formData.append('description', event.description);
+          formData.append('images', image);
+            axios.post('http://localhost:8080/api/v1/events/add',formData)
+            .then(res=>console.log(res)
+          
+          )
             .catch(err=>console.log(err));
         }
     };
@@ -42,7 +55,7 @@ const AddEvent = () => {
         if( !event.description){
             errors.description='* Description is required!';
         }
-        if(!event.uploaded){
+        if(!image){
             errors.uploaded='* File is required!';
         }
         return errors;
@@ -86,9 +99,8 @@ const AddEvent = () => {
           <div className="upload">
             <label for="upload-file">Upload file: </label>
             <input id="upload-file" type="file" 
-             name='uploaded'
-             value={event.uploaded}
-             onChange={handleChange}/>
+             name='image'
+             onChange={handleFileChange}/>
           </div>
           {formErrors.uploaded && <p id='errors'>{formErrors.uploaded}</p>}
           <div className="action-addevent">
@@ -97,10 +109,7 @@ const AddEvent = () => {
             </button>
             <button className="cancel" type="reload">
               Cancel
-            </button>
-            <button className="delete" type="delete">
-              Delete
-            </button>
+            </button>            
           </div>
         </form>
       </div>

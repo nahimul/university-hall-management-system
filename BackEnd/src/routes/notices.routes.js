@@ -1,9 +1,9 @@
 import { Router }from 'express';
-import {addNotice , getNotice } from '../controller/notices.controller.js';
+import {addNotice , getNotice, deleteNotice } from '../controller/notices.controller.js';
 import {upload} from '../middlewares/multer.middlewares.js';
 const router = Router();
 
-router.route('/addnotice').post(
+router.route('/add').post(
     upload.fields 
     ([
         {
@@ -12,6 +12,7 @@ router.route('/addnotice').post(
         }
     ])
     ,addNotice);
-router.route('/getnotice').get(getNotice);
+router.route('/get').get(getNotice);
+router.route('/delete/:id').delete(deleteNotice);
 
 export default router;
