@@ -4,7 +4,7 @@ import {APIError} from '../utls/APIError.js';
 import {APIResponse} from '../utls/APIResponse.js';
 import {uploadCloudinary} from '../utls/cloudinary.js';
 
-const offiersRegistration= asyncHandler( async (req,res)=>{
+const officerRegistration= asyncHandler( async (req,res)=>{
     const {name,possition,id_no,mobile,registration,email,password}=req.body;
     console.log(req.body);
     if( [name,possition,id_no,mobile,registration,email,password].some((field)=>{field?.trim()===""})) {
@@ -112,4 +112,4 @@ const generateTokens = async (userID)=>{
   
 
 
-export {offiersRegistration, loginOfficers, logoutOfficers};
+export {officerRegistration, loginOfficers, logoutOfficers};

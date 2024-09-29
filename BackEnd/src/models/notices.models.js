@@ -7,6 +7,16 @@ const noticesSchema = new Schema({
         trim:true,
         required:true,
     },
+    time: {
+        type:String,
+        required:true,
+        trim:true,
+    },
+    date:{
+        type:String,
+        required:true,
+        trim:true,
+    },
     description:  {
         type:String,
         trim:true,

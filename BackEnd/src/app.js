@@ -31,4 +31,5 @@ app.use("/api/v1/students", studentsRouter);
 app.use("/api/v1/notices",noticeRouter);
 app.use("/api/v1/events",eventsRouter);
 
+
 export {app};

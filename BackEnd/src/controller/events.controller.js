@@ -36,7 +36,7 @@ const addEvent = asyncHandler ( async (req,res)=>{
 } );
 
 const getEvents = asyncHandler(async (req,res)=>{
-    const notices = await Events.find().select("-description");
+    const notices = await Events.find();
     if(!notices){
         throw new APIError(404,"No Event found!");
     }
