@@ -55,7 +55,7 @@ function App() {
       element:<><Navbar user=''/><Home/></>
     },
     {
-      path:"/event",
+      path:"/event/:id",
       element:<><Navbar user=''/><Events/></>
     },
     {

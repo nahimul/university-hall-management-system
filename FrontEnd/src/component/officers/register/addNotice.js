@@ -2,6 +2,8 @@ import React from 'react';
 import {useState} from 'react';
 import axios from 'axios';
 import './addEvent.css';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 const AddNotice = () => {
     const initialValue={
         title:'',
@@ -9,7 +11,7 @@ const AddNotice = () => {
         date:'',
         description:'',
     };
-
+    const navigate= useNavigate();
     const [notice,setNotice]=useState(initialValue);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit,setIsSubmit]= useState(false);
@@ -69,13 +71,20 @@ const AddNotice = () => {
           formData.append('upFile', docs);
 
           console.log("image: ",docs);
-          
+      
           axios.post('http://localhost:8080/api/v1/notices/add',formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },}
           )
-            .then(res=>console.log(res)
+            .then(res=>{console.log(res);
+              Swal.fire({ 
+                title: 'Notice Added Successfully',
+                icon: 'success',
+                confirmButtonText: 'OK'
+              }) 
+              navigate('/home');
+            }
           )
             .catch(err=>console.log(err));
         }

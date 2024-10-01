@@ -6,7 +6,9 @@ import { faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 const EventContainer = () => {
+
   const [events, setEvents] = useState([]);
+  
   useEffect(() => {
     axios.get('http://localhost:8080/api/v1/events/get')
 
@@ -17,6 +19,11 @@ const EventContainer = () => {
         console.log(error);
       })
   }, []);
+
+  if (!events) {
+    return <div>Loading....</div>
+  }
+  
 return (
     <div className="event-container">
       <h2>Recent Event</h2>
@@ -34,7 +41,7 @@ return (
             <p>{event.description}</p>
           </div>
           <div className="read-more">
-            <Link to="/event">Read More</Link>
+            <Link to={`/event/${event._id}`} onClick=''>Read More</Link>
           </div>
         </div>
       </div>

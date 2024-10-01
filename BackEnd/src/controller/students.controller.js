@@ -3,6 +3,10 @@ import { Students } from '../models/students.models.js';
 import { APIError } from '../utls/APIError.js';
 import { APIResponse } from '../utls/APIResponse.js';
 import { uploadCloudinary } from '../utls/cloudinary.js';
+
+import {Application} from '../models/application.model.js';
+import {Complain} from '../models/complainbox.models.js';
+
 //register student
 const registerStudents = asyncHandler(async (req, res) => {
   
@@ -115,6 +119,7 @@ const getProfile = asyncHandler(async (req, res) => {
 
 //logout student
 const logoutStudent = asyncHandler(async (req, res) => {
+  
   await Students.findByIdAndUpdate(
     req.user._id,
     { 
@@ -134,4 +139,95 @@ const logoutStudent = asyncHandler(async (req, res) => {
   .json(new APIResponse(200, {}, 'Logout Success'));
 });
 
-export { registerStudents, loginStudent, logoutStudent,getProfile };
+//allotment form
+
+const applicationForAllotment = asyncHandler(async (req, res) => {
+  const createdBy = req.user._id;
+  console.log('createdBy: ', createdBy);
+  const { result, emergencyContact,emergencyPerson,expectedDate,details} = req.body;
+  if (
+    [result, emergencyContact,emergencyPerson,expectedDate,details].some(field => {
+      field?.trim() === '';
+    })
+  ) {
+    throw new APIError(400, 'All field is required!!!');
+  }
+  const isExist = await Application.findOne({
+    createdBy
+  });
+
+  if (isExist) {
+    throw new APIError(
+      409,
+      'Application already exist! Try new one..'
+    );
+  }
+  const imagePath = req.files?.docs[0]?.path;
+  if (!imagePath) {
+    throw new APIError(400, 'Docs is required and path!');
+  }
+
+  const docs = await uploadCloudinary(imagePath);
+  if (!docs) {
+    throw new APIError(400, 'Docs is required!');
+  }
+  console.log('application: ', req.body);
+  const application = await Application.create ({
+    result,
+    emergencyContact,
+    emergencyPerson,
+    expectedDate,
+    docs: docs?.url || '',
+    details,
+    createdBy
+  });
+
+  const createdApplication = await Application.findById(application._id).select(
+    '-createdBy'
+  );
+  
+  if (!createdApplication) {
+    throw new APIError(500, 'Somthing is Wrong!');
+  }
+
+  return res
+    .status(201)
+    .json(new APIResponse(200, createdApplication, 'Application Submitted Successfully'));
+
+}
+)
+
+//complain
+
+const complain = asyncHandler(async (req, res) => {
+  const createdBy = req.user._id;
+  console.log('createdBy: ', createdBy);
+  const { subject, description} = req.body;
+  if (
+    [subject, description].some(field => {
+      field?.trim() === '';
+    })
+  ) {
+    throw new APIError(400, 'All field is required!!!');
+  }
+  console.log('complain: ', req.body);
+  const complain = await Complain.create ({
+    subject,
+    description,
+    createdBy
+  });
+
+  const createdComplain = await Complain.findById(complain._id).select('-createdBy');
+  
+  if (!createdComplain) {
+    throw new APIError(500, 'Somthing is Wrong!');
+  }
+
+  return res
+    .status(201)
+    .json(new APIResponse(200, createdComplain, 'Complain Submitted Successfully'));
+
+}
+)
+
+export { registerStudents, loginStudent, logoutStudent,getProfile,applicationForAllotment,complain };

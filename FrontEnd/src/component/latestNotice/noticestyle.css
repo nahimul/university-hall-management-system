@@ -4,7 +4,7 @@
   font-family: Montserrat;
 }
 .notice .date {
-    width:135px;
+    width:150px;
     border-right: 1px solid #c4c2cc;
     padding: 12px 16px 12px 16px;
   }
@@ -36,6 +36,7 @@
     justify-content: space-between;
     align-items: center;
     gap:10px;
+    margin-right:10px;
   }
   .notice .title {
     padding: 12px 16px 12px 16px;

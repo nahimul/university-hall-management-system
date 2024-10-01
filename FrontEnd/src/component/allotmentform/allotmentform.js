@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './allotmentform.css';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const AllotmentForm = () => {
   
@@ -17,13 +17,12 @@ const AllotmentForm = () => {
   };
   
   const navigate=useNavigate();
+
   const [formInput, setFormInput] = useState(initialValue);
-  const [formErrors, setFormErrors] = useState({});
-  const [isSubmitted,setIsSubmitted]=useState(false);
   const [docs,setDocs]=useState(null);
 
   const handleFileChange = e => {
-    const file = e.target.docs;
+    const file = e.target.files[0];
     setDocs(file);
   };
 
@@ -35,10 +34,7 @@ const AllotmentForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    //setFormErrors(validate(formInput));
-    // setIsSubmitted(true);
-    // if(Object.keys(formErrors).length===0 && isSubmitted){
-    console.log(formInput);
+      console.log(formInput);
       const formData = new FormData();
       formData.append('result', formInput.result);
       formData.append('emergencyPerson', formInput.emergencyPerson);
@@ -46,40 +42,37 @@ const AllotmentForm = () => {
       formData.append('expectedDate', formInput.expectedDate);
       formData.append('details', formInput.details);
       formData.append('docs', docs);
-
+      console.log("docs : ",docs);
       console.log(formData);
-    //   axios.post('http://localhost:8080/api/v1/students/allotmentform',formData)
-    // .then(res=>{console.log(res)
-    //   toast('Application Successfull!')
-    //   navigate('/home');
-    // })
-    //   .catch(err=>{console.log(err)
-    //     toast(`Error:${err}`);
-    //   })
+      axios.post('http://localhost:8080/api/v1/students/allotmentform',formData
+
+      ,{
+        withCredentials:true,
+      }
+      )
+    .then(res=>{
+      console.log(res)
+     Swal.fire({
+      title: 'Allotment Form Submitted Successfully',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    })
+     navigate('/home');
+    })
+      .catch(err=>{console.log(err)
+        Swal.fire({
+          title: 'Allotment Form Submission Failed',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
+      })
     
   };
 
 
-  // const validate = formInput => {
-  //   const errors = {};
-  //   if (!formInput.result) {
-  //     errors.result = 'Name is Required!';
-  //   }
-  //   if (!formInput.emergencyPerson) {
-  //     errors.emergencyPerson = 'Department is Required!';
-  //   }
-  //   if (!formInput.emergencyContact) {
-  //     errors.emergencyContact = 'emergencyContact is Required!';
-  //   }
-  //   if (!formInput.details) {
-  //     errors.details = 'Password is required!';
-  //   } 
-  //   return errors;
-  // };
-
-  return (
+return (
     <div className="allotmentform">
-      {/* <pre>{JSON.stringify(formInput, null, 2)}</pre> */}
+      <pre>{JSON.stringify(formInput, null, 2)}</pre>
       <Link to="/Home">
         <button className="back" type="'submit">
           <FontAwesomeIcon
@@ -91,7 +84,8 @@ const AllotmentForm = () => {
         </button>
       </Link>
       <h1>Apply for allotment</h1>
-      <form >
+      
+      <form onSubmit={handleSubmit}>
 
         <label htmlFor='result'>
           <h3>Latest Result: </h3>
@@ -156,7 +150,7 @@ const AllotmentForm = () => {
       </div>
 
       <div className="action">
-        <button type="submit" id='submit' onSubmit={handleSubmit}>Submit</button>
+        <button type="submit" id='submit'>Submit</button>
         <button type="reset" id='cancel'>Cancel</button>
       </div>
       </form>

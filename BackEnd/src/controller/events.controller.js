@@ -19,13 +19,13 @@ const addEvent = asyncHandler ( async (req,res)=>{
     if(!image){
         throw new APIError(400,"Event image is required!");
     }
-    const notice= await Events.create({
+    const event= await Events.create({
         title,
         description,
         date,
         images:image?.url || '',
     });
-    const createdNotice = await Events.findById(notice._id).select(" -description");
+    const createdNotice = await Events.findById(event._id).select(" -description");
     if(!createdNotice){
         throw new APIError(500,"Somthing is Wrong!");
     }
@@ -34,15 +34,28 @@ const addEvent = asyncHandler ( async (req,res)=>{
         new APIResponse(200,createdNotice,"Add a Event Successfully!")
     );
 } );
-
+//Get All Events
 const getEvents = asyncHandler(async (req,res)=>{
-    const notices = await Events.find();
-    if(!notices){
+    const events = await Events.find();
+    if(!events){
         throw new APIError(404,"No Event found!");
     }
     return res.status(200).json(
-        new APIResponse(200,notices,"All Events" )
+        new APIResponse(200,events,"All Events" )
     );
 }   );
 
-export {addEvent , getEvents};
+//get Event by Id
+const getEventById = asyncHandler(async (req,res)=>{
+    const {id}=req.params;
+    const event = await Events.findById(id);
+    if(!event){
+        throw new APIError(404,"No Event found!");
+    }
+    return res.status(200).json(
+        new APIResponse(200,event,"Event" )
+    );
+}
+);
+
+export {addEvent , getEvents, getEventById};
