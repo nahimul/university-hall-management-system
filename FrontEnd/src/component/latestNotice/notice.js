@@ -8,6 +8,7 @@ import axios from 'axios';
 import fileDownload from 'js-file-download';
 
 const Notice = () => {
+   
 
    const [notices, setNotices] = useState([]);
     useEffect(() => {
@@ -28,7 +29,11 @@ const Notice = () => {
         responseType: 'blob',
     }).then((res) => {
         fileDownload(res.data, url);
-    });
+    })
+    .catch((error) => {
+        console.log(error);
+    }
+    );
 
  }
 

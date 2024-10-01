@@ -22,10 +22,6 @@ const noticesSchema = new Schema({
         trim:true,
         required:true,
     },
-    date: {
-        type:Date,
-        default:Date.now,
-    },
     upFile: {
         type:String,//url
         required:true,

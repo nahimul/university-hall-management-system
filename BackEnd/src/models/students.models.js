@@ -61,7 +61,7 @@ const studentSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { timeseries: true }
+  { timestamps: true }
 );
 
 studentSchema.pre('save', async function (next) {

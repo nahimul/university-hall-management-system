@@ -13,40 +13,34 @@ const Navbar=(props)=>{
     const navigate=useNavigate();
     
     const [user, setUser]= useState({});
-    const [token, setToken]=useState(Cookies.get('accessToken'));
-    console.log(token);
-    if(token){  
-    const decoded = jwtDecode(token);
-    console.log(decoded);
-    }
-
-
+    const [token, setToken]=useState(Cookies.get('accessToken'));    
     
-    if(token){
     useEffect( () => {   
-      
       //const url = `http://localhost:8080/api/v1/${props.user}/profile`;
-      
       axios.get('http://localhost:8080/api/v1/students/profile'
         ,{
           withCredentials:true,
         }
       )
     .then((res)=>{    
-        setUser(res.data.data);
+      setUser(res.data.data);
+      setToken(Cookies.get('accessToken'));
     } )
     .catch((error)=>{
         console.log(error);
       }
     )
+    
+  },[]);
 
-    },[]);
-    }
+// if(token){  
+// const decoded = jwtDecode(token);
+// console.log(decoded);
+// }
  
     const handleLogout = () => {
         
-            axios.post('http://localhost:8080/api/v1/students/logout',
-                {}
+        axios.post('http://localhost:8080/api/v1/students/logout',{}
               ,{
                 withCredentials:true,
               }
@@ -68,9 +62,11 @@ const Navbar=(props)=>{
     return (
         <div className="nav-bar">
             <div className="nav-left">
-            
+              <Link to="/home">
                 <img className="nav-logo border" src={process.env.PUBLIC_URL + 'logo.jpg'} />
+              </Link>
                 <h1> Shaheed Ziaur Rahman Hall</h1>
+            
             </div>
             {token ?
              <div className="nav-right">
@@ -87,13 +83,14 @@ const Navbar=(props)=>{
                 </div>
             </div>
             :
-            <>
             <div className="nav-right">
                 <Link className="nav-home" to="/home">Home</Link>
                 <div className="user user1">
                     <button className="nav-login ">
-                    <Link to="#">Login</Link>
-                    <FontAwesomeIcon classsName="i" icon={faUser} />
+                      <div className='login-logo'>
+                            <Link to="#">Login</Link>
+                            <FontAwesomeIcon className="i" icon={faUser} />
+                      </div>
                     </button> 
                     <ul className="login-sub-menu sub-menu">
                         <li><Link to="/login">Student</Link></li>
@@ -101,20 +98,7 @@ const Navbar=(props)=>{
                         <li><Link to="/login">Admin</Link></li>
                     </ul>   
                 </div>
-
-                <div className="user user2">
-                    <button className="nav-login ">
-                    <img className="logo-img" src={process.env.PUBLIC_URL + 'images.png'}/>
-                    </button> 
-                    <ul className="login-sub-menu sub-menu">
-                        <li><Link to="/">Logout</Link></li>
-                        <li><Link to="#">Profile</Link></li>
-                        <li><Link to="#">Settings</Link></li>
-                    </ul>   
-                </div>
             </div>
-            </>
-
             }
         </div>
     );

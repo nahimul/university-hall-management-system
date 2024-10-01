@@ -21,13 +21,16 @@
     color: white;
     padding: 5px;
     background-color: inherit;
-    width: 100px;
+    width: 80px;
     font-family: inherit;
-    margin: 0;
+    cursor: pointer;
   }
-  .nav-login .i{
-    padding :10px;
+  .nav-login .login-logo{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
   }
+ 
   .nav-bar .nav-right .login-sub-menu a{
     font-family: Montserrat;
     display:block;

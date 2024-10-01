@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import './addEvent.css';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+
 const AddEvent = () => {
     const initialValue={
         title:'',
         date:'',
         description:'',
     };
-
+  const navigate= useNavigate();
     const [event,setNotice]=useState(initialValue);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit,setIsSubmit]= useState(false);
@@ -19,7 +21,6 @@ const AddEvent = () => {
         const file = e.target.files[0];
         setImage(file);
     };
-
 
     const handleChange= e=>{
         const {name,value}=e.target;
@@ -37,8 +38,16 @@ const AddEvent = () => {
           formData.append('description', event.description);
           formData.append('images', image);
             axios.post('http://localhost:8080/api/v1/events/add',formData)
-            .then(res=>console.log(res)
-          
+            .then(res=>{
+              console.log(res);
+              Swal.fire({ 
+                title: 'Event Added Successfully',
+                icon: 'success',
+                confirmButtonText: 'OK'
+              }) 
+              navigate('/register');
+            }
+
           )
             .catch(err=>console.log(err));
         }

@@ -13,6 +13,7 @@ router.route('/add').post(
     ])
     ,addNotice);
 router.route('/get').get(getNotice);
+router.route('/get/:id').get(getNotice);
 router.route('/delete/:id').delete(deleteNotice);
 
 export default router;

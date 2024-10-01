@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import EventContainer from './eventcontainer'; 
 import './eventstyle.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,18 +9,22 @@ import { useEffect, useState } from 'react';
 
 const Events = () => {
 
-  const [events, setEvents] = useState([]);
+  const { id } = useParams(); 
+  const [event, setEvent] = useState({});
   useEffect(() => {
-    axios.get('http://localhost:8080/api/v1/events/get')
+    axios.get(`http://localhost:8080/api/v1/events/get/${id}`)
       .then((res) => {
-        console.log(res.data.data);
-        setEvents(res.data.data);
-        console.log(events);
+        setEvent(res.data.data);
+        console.log(event);
       })
       .catch((error) => {
         console.log(error);
       })
   }, []);
+
+  if (!event) {
+    return <div>Loading....</div>
+  }
 
   return (
     <div className="details-container">
@@ -33,64 +37,17 @@ const Events = () => {
         </Link>
         <div className="details">
           <div className="event-image">
-          <img src={process.env.PUBLIC_URL + '/event1.png'}
+          <img src={event.images}
                     alt="Event"
                   />
           </div>
           <div className="event-text">
             <p className="date">
-              <i className="far fa-calendar-check"></i> 01 July 2024
+              <i className="far fa-calendar-check"></i> {event.date}
             </p>
-            <h3>Event Title</h3>
+            <h3>{event.title}</h3>
             <p>
-              Event Description Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Itaque dolor iste exercitationem unde cum at
-              nihil pariatur fugit alias. Totam dolores reiciendis asperiores
-              quibusdam nihil sunt voluptates voluptatum dolore nesciunt? Event
-              Description Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Itaque dolor iste exercitationem unde cum at nihil pariatur
-              fugit alias. Totam dolores reiciendis asperiores quibusdam nihil
-              sunt voluptates voluptatum dolore nesciunt? Event Description
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
-              dolor iste exercitationem unde cum at nihil pariatur fugit alias.
-              Totam dolores reiciendis asperiores quibusdam nihil sunt
-              voluptates voluptatum dolore nesciunt? Event Description Lorem
-              ipsum dolor sit amet consectetur adipisicing elit. Itaque dolor
-              iste exercitationem unde cum at nihil pariatur fugit alias. Totam
-              dolores reiciendis asperiores quibusdam nihil sunt voluptates
-              voluptatum dolore nesciunt? Event Description Lorem ipsum dolor
-              sit amet consectetur adipisicing elit. Itaque dolor iste
-              exercitationem unde cum at nihil pariatur fugit alias. Totam
-              dolores reiciendis asperiores quibusdam nihil sunt voluptates
-              voluptatum dolore nesciunt? Event Description Lorem ipsum dolor
-              sit amet consectetur adipisicing elit. Itaque dolor iste
-              exercitationem unde cum at nihil pariatur fugit alias. Totam
-              dolores reiciendis asperiores quibusdam nihil sunt voluptates
-              voluptatum dolore nesciunt?
-              Event Description Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Itaque dolor iste exercitationem unde cum at
-              nihil pariatur fugit alias. Totam dolores reiciendis asperiores
-              quibusdam nihil sunt voluptates voluptatum dolore nesciunt? Event
-              Description Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Itaque dolor iste exercitationem unde cum at nihil pariatur
-              fugit alias. Totam dolores reiciendis asperiores quibusdam nihil
-              sunt voluptates voluptatum dolore nesciunt? Event Description
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
-              dolor iste exercitationem unde cum at nihil pariatur fugit alias.
-              Totam dolores reiciendis asperiores quibusdam nihil sunt
-              voluptates voluptatum dolore nesciunt? Event Description Lorem
-              ipsum dolor sit amet consectetur adipisicing elit. Itaque dolor
-              iste exercitationem unde cum at nihil pariatur fugit alias. Totam
-              dolores reiciendis asperiores quibusdam nihil sunt voluptates
-              voluptatum dolore nesciunt? Event Description Lorem ipsum dolor
-              sit amet consectetur adipisicing elit. Itaque dolor iste
-              exercitationem unde cum at nihil pariatur fugit alias. Totam
-              dolores reiciendis asperiores quibusdam nihil sunt voluptates
-              voluptatum dolore nesciunt? Event Description Lorem ipsum dolor
-              sit amet consectetur adipisicing elit. Itaque dolor iste
-              exercitationem unde cum at nihil pariatur fugit alias. Totam
-              dolores reiciendis asperiores quibusdam nihil sunt voluptates
-              voluptatum dolore nesciunt?
+              {event.description}
             </p>
           </div>
         </div>
