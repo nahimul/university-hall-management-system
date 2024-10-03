@@ -38,7 +38,7 @@ return (
               <FontAwesomeIcon className="i" icon={faCalendarCheck} /> {event.date}
             </p>
             <h3>{event.title}</h3>
-            <p>{event.description}</p>
+            <p>{event.description.split(" ").slice(0,40).join(" ")}</p>
           </div>
           <div className="read-more">
             <Link to={`/event/${event._id}`} onClick=''>Read More</Link>

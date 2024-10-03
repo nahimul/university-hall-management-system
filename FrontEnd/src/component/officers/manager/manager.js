@@ -29,7 +29,7 @@ const Manager = () => {
             }}
             style={residence ? optionOn : optionOff}
           >
-            Alloted Student
+            Allotted Student
           </button>
           <button
             type="submit"
@@ -39,7 +39,7 @@ const Manager = () => {
             }}
             style={residence ? optionOff : optionOn}
           >
-            Allote Request
+            Allot Request
           </button>
         </div>
       </div>

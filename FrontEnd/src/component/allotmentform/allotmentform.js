@@ -72,7 +72,7 @@ const AllotmentForm = () => {
 
 return (
     <div className="allotmentform">
-      <pre>{JSON.stringify(formInput, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(formInput, null, 2)}</pre> */}
       <Link to="/Home">
         <button className="back" type="'submit">
           <FontAwesomeIcon

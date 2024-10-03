@@ -42,7 +42,7 @@ const Login = () => {
       if(res.data.success)
           {
             toast("Login Successfull");
-            const rout= res.data.data.user.possition.toLowerCase();
+            const rout= res.data.data.user.position.toLowerCase();
             console.log(rout);
             navigate(`/${rout}`);
           }
