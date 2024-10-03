@@ -3,11 +3,14 @@ import  {Officers} from '../models/officers.models.js'
 import {APIError} from '../utls/APIError.js';
 import {APIResponse} from '../utls/APIResponse.js';
 import {uploadCloudinary} from '../utls/cloudinary.js';
+import {Application} from '../models/application.model.js';
+import {Complain} from '../models/complainbox.models.js';
+
 
 const officerRegistration= asyncHandler( async (req,res)=>{
-    const {name,possition,id_no,mobile,registration,email,password}=req.body;
+    const {name,position,id_no,mobile,registration,email,password}=req.body;
     console.log(req.body);
-    if( [name,possition,id_no,mobile,registration,email,password].some((field)=>{field?.trim()===""})) {
+    if( [name,position,id_no,mobile,registration,email,password].some((field)=>{field?.trim()===""})) {
         throw new APIError(400,"All field is required!");
     }
     const isExist = await Officers.findOne({$or:[{email},{id_no}]});
@@ -26,7 +29,7 @@ const officerRegistration= asyncHandler( async (req,res)=>{
 
     const officers= await Officers.create({
         name,
-        possition,
+        position,
         id_no,
         registration,
         mobile,
@@ -110,6 +113,27 @@ const generateTokens = async (userID)=>{
     .json(new APIResponse(200, {}, 'Logout Success'));
   });
   
+  //get allote request
+const getRequestedStudent = asyncHandler(async (req,res)=>{
+    const mergerData = await Application.getMergedApplications();
+    console.log(mergerData);
 
+    return res
+    .status(200)
+    .json(new APIResponse(200,mergerData,'Merge Successfully!'));
+})
+//get an allote request by ID
 
-export {officerRegistration, loginOfficers, logoutOfficers};
+const getRequestByID = asyncHandler(async(req,res)=>{
+  const {id}=req.params;
+  const mergerData = await Application.getMergedApplications();
+  const application= mergerData.filter((data)=>data._id.toString().includes(id));
+ // console.log("data: ",application);
+  if(!application){
+    throw new APIError (404,"No Application is Found!");
+  }
+  return res
+  .status (200)
+  .json(new APIResponse(200,application,"Application"));
+});
+export {officerRegistration, loginOfficers, logoutOfficers, getRequestedStudent,getRequestByID};

@@ -15,6 +15,7 @@ import OfficersRegistration from "./component/officers/registration/register"
 import Manager from "./component/officers/manager/manager"
 import Register from "./component/officers/register/register"
 import Supervisor from './component/officers/supervisor/supervisor';
+import Action from './component/officers/manager/action'
 import Cookies from 'js-cookie';
 import { useState , useEffect} from 'react';
 
@@ -28,27 +29,10 @@ function App() {
     }
   }, []);
 
-  // const [user, setUser]= useState({});
-  // useEffect( () => {
-  //   const url = `http://localhost:8080/api/v1/${user}/profile`;
-  //   axios.get('http://localhost:8080/api/v1/students/profile'
-  //     ,{
-  //       withCredentials:true,
-  //     }
-  //   )
-  // .then((res)=>{
-  //     setUser(res.data.data.user);
-  // } )
-  // .catch((error)=>{
-  //     console.log(error);
-  //   } 
-  // )
-  // },[]);
-
   const router= createBrowserRouter([
     {
       path:"/",
-      element:<><Navbar user=''/><Home/><Home/></>,
+      element:<><Navbar user=''/><Home/></>,
     },
     {
       path:"/home",
@@ -95,6 +79,9 @@ function App() {
     },{
       path:"/supervisor",
       element:<><Navbar user='officer'/><Supervisor/></>
+    },{
+      path:"/action/:id",
+      element:<><Navbar user='officer'/><Action/></>
     }
   ]
   );

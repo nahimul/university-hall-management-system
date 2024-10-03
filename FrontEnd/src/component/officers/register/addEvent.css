@@ -49,9 +49,6 @@
     font-size:18px;
     font-weight: 600;
 }
-.action-addevent .delete{
-    background: rgb(104, 27, 27);
-}
 .action-addevent .cancel{
     background: #002F91;
 }

@@ -1,0 +1,88 @@
+.person-details .back {
+background: inherit;
+border: none;
+text-align: start;
+width: 95px;
+gap: 4px;
+font-family: Montserrat;
+font-size: 16px;
+color: #081c3b;
+}
+.person-details button:hover {
+/* zoom in */
+transform: scale(1.1);
+cursor: pointer;
+}
+
+.application-action h2{
+  font-family: Montserrat;
+font-size: 40px;
+font-weight: 600;
+text-align: left;
+}
+.name{
+  font-family: Montserrat;
+font-size: 32px;
+}
+
+.person-details .details img {
+width: 276px;
+height: 276px;
+border-radius: 8px;
+}
+.person-details .person-info{
+  width: 813px;
+height:276px;
+gap: 20px;
+}
+.person-details .details-table, .application-details .details-table {
+width: 100%;
+height: 240px;
+border-collapse: collapse;
+margin: 10px 0;
+font-size: 24px;
+font-family: Montserrat;
+color: #081c3b;
+text-align: left;
+}
+
+.person-details .details-table #resident{
+  color: #4CAF50;
+}
+.person-details .details-table #non-resident{
+  color: #f44336;
+}
+
+.person-details .details {
+display: flex;
+justify-content: start;
+gap: 24px;
+width: 1113px;
+}
+
+.application-action button{
+  margin:20px 20px 0px 0px;
+  width: 133px;
+  height: 40px;
+  border:none;
+  border-radius: 12px;
+  font-size:18px;
+  font-weight: 600;
+  color: white;
+}
+.application-action .reject{
+  background:red;
+}
+.application-action .approve{
+  background: green;
+}
+
+.application-action {
+display: flex;
+justify-content: start;
+flex-direction: column;
+margin: 50px 132px;
+background: white;
+gap: 10px;
+}
+

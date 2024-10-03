@@ -96,6 +96,7 @@ const loginStudent = asyncHandler(async (req, res) => {
   const options = {
     httpOnly: true,
     secure:true,
+    maxAge:10*1000,
   }
  
   return res
@@ -134,8 +135,8 @@ const logoutStudent = asyncHandler(async (req, res) => {
   
   return res
   .status(200)
-  .cookie("accessToken",options)
-  .cookie("refreshToken",options)
+  .clearCookie("accessToken",options)
+  .clearCookie("refreshToken",options)
   .json(new APIResponse(200, {}, 'Logout Success'));
 });
 
@@ -229,5 +230,9 @@ const complain = asyncHandler(async (req, res) => {
 
 }
 )
+
+//return merge value of two collections
+
+
 
 export { registerStudents, loginStudent, logoutStudent,getProfile,applicationForAllotment,complain };

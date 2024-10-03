@@ -1,12 +1,27 @@
 import React,{useState,useEffect} from 'react';
-import student from '../allotedStudent/student';
 import '../allotedStudent/allotedstudent.css';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+// import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-const AllotedStudent = () => {
-    const [data, setData] = useState(student);
+const AlloteRequest = () => {
+    const [store, setStore] = useState([]);
+    const [data, setData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    useEffect(() => {
+      axios.get('http://localhost:8080/api/v1/officers/requested',{
+        withCredentials:true,
+      }) 
+      .then((res) => {
+        setData(res.data.data);
+        setStore(res.data.data);
+      })
+      .catch((error) => {
+        console.log("ERROR: ", error);
+      })
+    }, []);
+
     const recordsPerPage = 10;
     const lastIdx = currentPage * recordsPerPage;
     const firstIdx = lastIdx - recordsPerPage;
@@ -38,27 +53,24 @@ const AllotedStudent = () => {
       setSearch(e.target.value);
     };
 
-    const getFilterData = (e) => {
-      e.preventDefault();
+    const getFilterData = () => {
       console.log(searchBy, search);
       if (searchBy === 'name') {
-        setData(student.filter((student) => student.name.toLowerCase().includes(search.toLowerCase())));
+        setData(data.filter((records) => records.student.name.toLowerCase().includes(search.toLowerCase())));
       } else if (searchBy === 'department') {
-        setData(student.filter((student) => student.department.toLowerCase().includes(search.toLowerCase())));
+        setData(records.filter((records) => records.student.department.toLowerCase().includes(search.toLowerCase())));
       } else if (searchBy === 'roll') {
-        setData(student.filter((student) => student.roll.toLowerCase().includes(search.toLowerCase())));
-      } else if (searchBy === 'room') {
-        setData(student.filter((student) => student.room.toLowerCase().includes(search.toLowerCase())));
-      } else if (searchBy === 'mobile') {
-        setData(student.filter((student) => student.mobile.toLowerCase().includes(search.toLowerCase
+        setData(records.filter((records) => records.student.roll.toLowerCase().includes(search.toLowerCase())));
+      }else if (searchBy === 'mobile') {
+        setData(data.filter((records) => records.student.mobile.toLowerCase().includes(search.toLowerCase
         ())));
       }
     }
 
     useEffect(() => {
-      setData(student);
+      setData(records);
     }, []);
-
+   console.log(store);
     return (
       <div className='records'>
         <div className='students'>
@@ -68,14 +80,13 @@ const AllotedStudent = () => {
                 <option value='name'>Name</option>
                 <option value='department'>Department</option>
                 <option value='roll'>Roll</option>
-                <option value='room'>Room</option>
                 <option value='mobile'>Mobile</option>
               </select>
             <label htmlFor='search'> Value : </label>
             <input type='text' className='search' onChange={handleSearch}/>
             
             <input type='submit' value='Search' className='search-btn' onClick={getFilterData}/>
-            <input type='submit' value='Reset' className='reset-btn' onClick={() => setData(student)}/>
+            <input type='submit' value='Reset' className='reset-btn' onClick={() => setData(store)}/>
 
 
             <table className='students-table'>
@@ -83,22 +94,20 @@ const AllotedStudent = () => {
                     <th>STUDENT NAME</th>
                     <th>DEPARTMENT</th>
                     <th>STUDENT ID</th>
-                    <th>ROOM NO</th>
                     <th>MOBILE</th>
                     <th>DESIRED ALLOT</th>
                     <th style={{width:'60px'}}>ACTION</th>
                   </thead>
                   <tbody>
-                    {records.map((student) => (
+                    {records.map((user) => (
                                           
                       <tr>
-                        <td style={{width:'20%'}}>{student.name}</td>
-                        <td style={{width:'20%'}}>{student.department}</td>
-                        <td style={{width:'20%'}}>{student.roll}</td>
-                        <td style={{width:'15%'}}>{student.room}</td>
-                        <td style={{width:'20%'}}>{student.mobile}</td>
-                        <td style={{width:'20%'}}>{student.date}</td>
-                        <td id='action'><button className='action-btn'><img id='setting' src={process.env.PUBLIC_URL + '/setting.png'} /></button></td>
+                        <td style={{width:'20%'}}>{user.student.name}</td>
+                        <td style={{width:'20%'}}>{user.student.department}</td>
+                        <td style={{width:'20%'}}>{user.student.roll}</td>
+                        <td style={{width:'20%'}}>{user.student.mobile}</td>
+                        <td style={{width:'20%'}}>{user.expectedDate}</td>
+                        <td id='action'><Link className='action-btn' to={`/action/${user._id}`} onClick=''><img id='setting' src={process.env.PUBLIC_URL + '/setting.png'} /></Link></td>
                       </tr>
                     ))
                     }
@@ -130,4 +139,4 @@ const AllotedStudent = () => {
     )
 }
 
-export default AllotedStudent;
+export default AlloteRequest;

@@ -63,7 +63,7 @@ const ComplainBox = () => {
         </button>
       </Link>
       <h1>Complain Box</h1>
-      <pre>{JSON.stringify(formInput, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(formInput, null, 2)}</pre> */}
       <form onSubmit={handleSubmit}>
         <h3>Subject of the Complain</h3>
         <div className="date">

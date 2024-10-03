@@ -83,7 +83,7 @@ const UserInfo = () => {
           </div>
         </div>
         </div>
-        <AllotmentInfo/>
+       { user.resident && user.resident.toLowerCase()==="resident" && <AllotmentInfo/>}
       </div>
   );
 };

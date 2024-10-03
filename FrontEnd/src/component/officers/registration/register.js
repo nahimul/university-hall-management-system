@@ -14,7 +14,7 @@ import Cookies from 'js-cookie';
 const Register = () => {
   const intialValue = {
     name: '',
-    possition: '',
+    position: '',
     id_no: '',
     registration: '',
     mobile: '',
@@ -52,7 +52,7 @@ const Register = () => {
     if (Object.keys(formErrors).length === 0 && isSubmitted) {
       const formData = new FormData();
       formData.append('name', formInput.name);
-      formData.append('possition', formInput.possition);
+      formData.append('position', formInput.position);
       formData.append('email', formInput.email);
       formData.append('id_no', formInput.roll);
       formData.append('registration', formInput.registration);
@@ -72,7 +72,6 @@ const Register = () => {
           navigate('/officerslogin');
         })
         .catch(err => console.log(err));
-      navigate('/officerslogin');
     }
   };
 
@@ -87,8 +86,8 @@ const Register = () => {
     if (!formInput.name) {
       errors.name = 'Name is Required!';
     }
-    if (!formInput.possition) {
-      errors.possition = 'Possition name is Required!';
+    if (!formInput.position) {
+      errors.position = 'Possition name is Required!';
     }
     if (!formInput.id_no) {
       errors.id_no = 'ID number is Required!';
@@ -105,6 +104,11 @@ const Register = () => {
     } else if (!regex.test(formInput.email)) {
       errors.email = 'This is not a valid email format!';
     }
+    if(!formInput.position){
+      if (!formInput.registration) {
+        errors.registration = 'position is Required!';
+      }
+    }
 
     if (!formInput.password) {
       errors.password = 'Password is required!';
@@ -118,7 +122,7 @@ const Register = () => {
 
   return (
     <div className="register-page">
-      <pre>{JSON.stringify(formInput, undefined, 2)}</pre>
+      {/* <pre>{JSON.stringify(formInput, undefined, 2)}</pre> */}
       <div className="login-header ">
         <h1>Register your account</h1>
       </div>
@@ -133,13 +137,13 @@ const Register = () => {
             onChange={handleChange}
           />
           {formErrors.name && <p id="error">{formErrors.name}</p>}
-          <InputLabel id='possition'>Possition:</InputLabel>      
+          <InputLabel id='position'>Position:</InputLabel>      
           <Select
-             label="Possition"
-             labelId="Possition"
+             label="Position"
+             labelId="Position"
             id="in"
-            name="possition"
-            value={formInput.possition}
+            name="position"
+            value={formInput.position}
             onChange={handleChange}
           >
             <MenuItem value=""> <em>--select one--</em> </MenuItem>
@@ -147,7 +151,7 @@ const Register = () => {
             <MenuItem value="Manager">Manager</MenuItem>
             <MenuItem value="Supervisor">Supervisor</MenuItem>
           </Select>
-          {formErrors.possition && <p id="error">{formErrors.possition}</p>}
+          {formErrors.position && <p id="error">{formErrors.position}</p>}
           <TextField
             type="text"
             label="ID number"

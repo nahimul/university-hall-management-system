@@ -1,3 +1,4 @@
+
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
@@ -84,6 +85,7 @@ studentSchema.methods.generateAccessToken = function () {
       email: this.email,
       roll: this.roll,
       name: this.name,
+      resident: this.resident,
     },
     process.env.ACCESS_TOKEN_SECRET,
     {
